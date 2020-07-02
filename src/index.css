@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --color-blue: rgb(13, 38, 252);
+    --color-white: #fff;
+    --color-black: #000;
+    --color-purple: #8076ff;
+}
+
+.app {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}

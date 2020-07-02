@@ -1,0 +1,11 @@
+textarea {
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border: 2px solid transparent;
+    padding: .4em .6em;
+    font-size: inherit;
+    letter-spacing: inherit;
+}
