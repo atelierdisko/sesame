@@ -13,7 +13,7 @@ const Reveal = () => {
 
   const checkToken = async () => {
     try {
-      const {data} = await axios.get(`${process.env.REACT_APP_API_HOST}/secret/${token}/exists`);
+      const {data} = await axios.get(`/api/secret/${token}/exists`);
 
       setRequiresPassphrase(data.requiresPassphrase);
       setExists(true);
@@ -32,7 +32,7 @@ const Reveal = () => {
     setLoading(true);
 
     try {
-      const {data: {secret}} = await axios.get(`${process.env.REACT_APP_API_HOST}/secret/${token}`);
+      const {data: {secret}} = await axios.get(`/api/secret/${token}`);
       setSecret(secret);
     } catch (error) {
 

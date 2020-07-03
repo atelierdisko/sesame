@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Create from "./pages/Create";
+import Index from "./pages/Index/Index";
 import Reveal from "./pages/Reveal";
 import NoMatch from "./pages/NoMatch";
 
@@ -9,10 +9,10 @@ const App = () => {
   return (
     <div className="app">
       <Router>
-        <div>
+        <div className='container'>
           <Switch>
             <Route path="/" exact={true}>
-              <Create/>
+              <Index/>
             </Route>
 
             <Route path="/reveal/:token">

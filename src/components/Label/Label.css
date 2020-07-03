@@ -1,5 +1,10 @@
 label {
+    font-family: var(--font-family-tech);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    box-sizing: border-box;
     display: block;
-    font-size: .5em;
-    line-height: .5em;
+    margin-bottom: calc(.5 * var(--spacing-unit));
 }

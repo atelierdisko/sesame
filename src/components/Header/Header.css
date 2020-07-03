@@ -13,5 +13,10 @@
 header {
     background: var(--color-purple);
     color: var(--color-white);
-    padding: 20px;
+    padding: calc(3 * var(--spacing-unit));
+    display: grid;
+}
+
+header div {
+    align-self: end;
 }

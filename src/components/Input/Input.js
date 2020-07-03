@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import './Input.css';
 
-const Input = ({isPrimary, children, ...rest}) => {
+const Input = forwardRef(({...rest}, ref) => {
+
   return (
-    <input {...rest}/>
+    <input {...rest} ref={ref}/>
   )
-};
+});
 
 export default Input

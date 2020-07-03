@@ -13,14 +13,14 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({title}) => {
+const Header = ({children}) => {
   return (
     <header>
-      <h1>Dorie</h1>
+      <h1 className='h-alpha'>Sesame</h1>
 
-      <h2>
-        {title}
-      </h2>
+      <div>
+        {children}
+      </div>
     </header>
   )
 };

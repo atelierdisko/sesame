@@ -1,11 +1,29 @@
-textarea {
-    margin: 0;
-    width: 100%;
+.textarea {
+    display: grid;
+    padding: calc(3 * var(--spacing-unit));
+    grid-template-rows: auto 20px;
     box-sizing: border-box;
-    background-color: var(--color-white);
+}
+
+.textarea textarea {
+    margin: 0;
+    border-radius: 0;
+    border: 0;
+    box-sizing: border-box;
+    background: var(--color-white);
     color: var(--color-black);
-    border: 2px solid transparent;
-    padding: .4em .6em;
-    font-size: inherit;
-    letter-spacing: inherit;
+    font-size: 2.125rem;
+    line-height: 1.25em;
+    outline: none;
+    resize: none;
+}
+
+.textarea .character-count {
+    text-align: right;
+    color: var(--color-light-grey);
+}
+
+::placeholder {
+    color: var(--color-purple);
+    font-size: 16px;
 }

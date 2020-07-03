@@ -1,2 +1,12 @@
 select {
+    appearance: none;
+    width: 100%;
+    border: 1px solid var(--color-black);
+    color: var(--color-black);
+    background: var(--color-white);
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+    padding: calc(1.5 * var(--spacing-unit));
+    box-sizing: border-box;
 }

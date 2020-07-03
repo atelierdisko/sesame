@@ -17,8 +17,8 @@ const Footer = () => {
 
   return (
     <footer>
-      <a href='https://github.com/atelierdisko'>Github</a>
-      <a href='http://atelierdisko.de/'>Atelier Disko</a>
+      <a className='t-gamma'>GitHub</a>
+      <a className='t-gamma' href='http://atelierdisko.de/'>Atelier Disko, 2020</a>
     </footer>
   )
 };

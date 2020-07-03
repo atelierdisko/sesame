@@ -1,21 +1,29 @@
 .button {
-    font-size: 1em;
-    line-height: 1em;
     display: block;
-    border-radius: 0;
-    background-color: var(--color-blue);
-    color: var(--color-white);
     padding: .8em 2em .7em;
     border: none;
-    cursor: pointer;
     position: relative;
     margin: 0;
+    width: 100%;
+    border-radius: 0;
+    outline: none;
+    font-family: var(--font-family-default);
+    font-size: 2.125rem;
+    font-weight: 400;
+    line-height: 1em;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
-.button.button--loading {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, var(--color-blue), var(--color-black));
-    background-size: 400% 400%;
-    animation: gradient 1s ease infinite;
+.button.button--primary {
+    background-color: var(--color-cyan);
+    color: var(--color-white);
+}
+
+.button.button--disabled {
+    background-color: var(--color-light-grey);
+    color: var(--color-mid-grey);
+    cursor: not-allowed;
 }
 
 @keyframes gradient {

@@ -1,0 +1,56 @@
+/*
+ * Copyright 2020 Atelier Disko. All rights reserved.
+ *
+ * Use of this source code is governed by the AD General Software
+ * License v1 that can be found under https://atelierdisko.de/licenses
+ *
+ * This software is proprietary and confidential. Redistribution
+ * not permitted. Unless required by applicable law or agreed to
+ * in writing, software distributed on an "AS IS" BASIS, WITHOUT-
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+
+.content--index .textarea {
+    height: 50%;
+}
+
+.content--index .options {
+    background: var(--color-mid-grey);
+    padding: 40px 30px;
+    box-sizing: border-box;
+    height: 25%;
+}
+
+.content--index .options input {
+    margin-bottom: calc(2.5 * var(--spacing-unit));
+}
+
+.content--index .options .generate-passphrase {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.content--index .button {
+    height: 25%;
+}
+
+.content--share .textarea {
+    height: 50%;
+}
+
+.content--share .passphrase {
+    background: var(--color-mid-grey);
+    padding: 40px 30px;
+    box-sizing: border-box;
+    height: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.content--share .passphrase > span {
+    width: 100%;
+}
+
+.content--share .button {
+    height: 25%;
+}

@@ -5,7 +5,7 @@ const Button = ({isPrimary, isDisabled, isLoading, children, ...rest}) => {
 
   const classes = ['button'];
 
-  if (isPrimary) classes.push('button--primary');
+  if (isPrimary) {classes.push('button--primary');}
   if (isDisabled) classes.push('button--disabled');
   if (isLoading) classes.push('button--loading');
 
