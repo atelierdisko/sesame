@@ -10,19 +10,17 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-import React from 'react';
-import './Header.css';
+import React from "react";
+import "./Header.css";
 
-const Header = ({children}) => {
+const Header = ({ children }) => {
   return (
     <header>
-      <h1 className='h-alpha'>Sesame</h1>
+      <h1 className="h-alpha">Sesame</h1>
 
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </header>
-  )
+  );
 };
 
-export default Header
+export default Header;

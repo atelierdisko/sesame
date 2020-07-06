@@ -11,12 +11,12 @@
  */
 
 header {
-    background: var(--color-purple);
-    color: var(--color-white);
-    padding: calc(3 * var(--spacing-unit));
-    display: grid;
+  background: var(--color-purple);
+  color: var(--color-white);
+  padding: calc(3 * var(--spacing-unit));
+  display: grid;
 }
 
 header div {
-    align-self: end;
+  align-self: end;
 }

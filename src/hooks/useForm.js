@@ -10,7 +10,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-import {useState} from "react";
+import { useState } from "react";
 
 const useForm = () => {
   const [formData, setFormData] = useState({});
@@ -21,14 +21,14 @@ const useForm = () => {
     const data = {};
 
     for (let [key, value] of new FormData(event.target).entries()) {
-      data[key] = value
+      data[key] = value;
     }
 
     setFormData(data);
     callback(data);
   };
 
-  return {formData, handleSubmit};
+  return { formData, handleSubmit };
 };
 
 export default useForm;

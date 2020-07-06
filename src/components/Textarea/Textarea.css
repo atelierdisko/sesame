@@ -1,29 +1,33 @@
 .textarea {
-    display: grid;
-    padding: calc(3 * var(--spacing-unit));
-    grid-template-rows: auto 20px;
-    box-sizing: border-box;
+  display: grid;
+  padding: calc(3 * var(--spacing-unit));
+  grid-template-rows: auto 20px;
+  box-sizing: border-box;
 }
 
 .textarea textarea {
-    margin: 0;
-    border-radius: 0;
-    border: 0;
-    box-sizing: border-box;
-    background: var(--color-white);
-    color: var(--color-black);
-    font-size: 2.125rem;
-    line-height: 1.25em;
-    outline: none;
-    resize: none;
+  margin: 0;
+  border-radius: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: 2.125rem;
+  line-height: 1.25em;
+  outline: none;
+  resize: none;
 }
 
 .textarea .character-count {
-    text-align: right;
-    color: var(--color-light-grey);
+  text-align: right;
+  color: var(--color-light-grey);
 }
 
 ::placeholder {
-    color: var(--color-purple);
-    font-size: 16px;
+  color: var(--color-purple);
+  font-size: 16px;
+}
+
+.textarea textarea.focus-visible {
+  border: 2px solid var(--color-black);
 }

@@ -11,10 +11,11 @@
  */
 
 footer {
-    padding: calc(3 * var(--spacing-unit));
-    background: var(--color-dark-grey);
-    justify-content: space-between;
-    display: flex;
-    align-items: flex-end;
-    color: rgba(255, 255, 255, .5);
+  padding: calc(3 * var(--spacing-unit));
+  background: var(--color-dark-grey);
+  justify-content: space-between;
+  display: flex;
+  align-items: flex-end;
+  color: rgba(255, 255, 255, 0.5);
+  min-height: 140px;
 }

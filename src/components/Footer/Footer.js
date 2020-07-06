@@ -10,17 +10,20 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
-
   return (
     <footer>
-      <a className='t-gamma'>GitHub</a>
-      <a className='t-gamma' href='http://atelierdisko.de/'>Atelier Disko, 2020</a>
+      <a className="t-gamma" href="http://github.com/atelierdisko/sesame">
+        GitHub
+      </a>
+      <a className="t-gamma" href="http://atelierdisko.de/">
+        Atelier Disko, 2020
+      </a>
     </footer>
-  )
+  );
 };
 
-export default Footer
+export default Footer;

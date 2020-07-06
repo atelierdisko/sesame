@@ -1,26 +1,26 @@
-import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "focus-visible/dist/focus-visible.min.js";
 import Index from "./pages/Index/Index";
-import Reveal from "./pages/Reveal";
+import Reveal from "./pages/Reveal/Reveal";
 import NoMatch from "./pages/NoMatch";
 
 const App = () => {
-
   return (
     <div className="app">
       <Router>
-        <div className='container'>
+        <div className="container">
           <Switch>
             <Route path="/" exact={true}>
-              <Index/>
+              <Index />
             </Route>
 
-            <Route path="/reveal/:token">
-              <Reveal/>
+            <Route path="/reveal/:hash">
+              <Reveal />
             </Route>
 
             <Route path="*">
-              <NoMatch/>
+              <NoMatch />
             </Route>
           </Switch>
         </div>

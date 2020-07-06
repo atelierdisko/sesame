@@ -7,9 +7,11 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "clipboard-polyfill": "^3.0.0-pre5",
+    "crypto-js": "^4.0.0",
+    "focus-visible": "^5.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hook-form": "^5.6.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-use-clipboard": "1.0.0"
@@ -18,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write src"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://develop.disko"
+  "proxy": "http://develop.disko",
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
 }

@@ -1,98 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
 
 :root {
-    --color-blue: rgb(13, 38, 252);
-    --color-dark-grey: #454545;
-    --color-mid-grey: #D2D2D8;
-    --color-light-grey: #E8E8F0;
-    --color-white: #fff;
-    --color-black: #000;
-    --color-purple: #916BFF;
-    --color-cyan: #00F5D4;
-    --color-yellow: #FFF74C;
+  --color-blue: rgb(13, 38, 252);
+  --color-dark-grey: #454545;
+  --color-mid-grey: #d2d2d8;
+  --color-light-grey: #e8e8f0;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-purple: #916bff;
+  --color-cyan: #00f5d4;
+  --color-yellow: #fff74c;
+  --color-red: #e83151;
+  --spacing-unit: 8px;
 
-    --spacing-unit: 8px;
-
-    --font-family-default: 'IBM Plex Sans', sans-serif;
-    --font-family-tech: 'IBM Plex Mono', monospace;
+  --font-family-default: "IBM Plex Sans", sans-serif;
+  --font-family-tech: "IBM Plex Mono", monospace;
 }
 
 ::selection {
-    background: var(--color-yellow)
+  background: var(--color-yellow);
 }
 
 body {
-    font-family: var(--font-family-default);
-    margin: 0;
+  font-family: var(--font-family-default);
+  margin: 0;
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
 
-h1, h2 {
-    margin: 0;
+h1,
+h2 {
+  margin: 0;
 }
 
 .h-alpha {
-    font-family: var(--font-family-default);
-    font-size: 3.625rem;
-    font-weight: 400;
-    line-height: 1em;
-    letter-spacing: 1px;
+  font-family: var(--font-family-default);
+  font-size: 3.625rem;
+  font-weight: 400;
+  line-height: 1em;
+  letter-spacing: 1px;
 }
 
 .h-beta {
-    font-family: var(--font-family-default);
-    font-size: 2.125rem;
-    line-height: 1.25em;
-    font-weight: 400;
+  font-family: var(--font-family-default);
+  font-size: 2.125rem;
+  line-height: 1.25em;
+  font-weight: 400;
 }
 
 .t-alpha {
-    font-family: var(--font-family-tech);
-    font-size: 16px;
-    line-height: 21px;
-    font-weight: 400;
+  font-family: var(--font-family-tech);
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
 }
 
 .t-beta {
-    font-family: var(--font-family-tech);
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 400;
+  font-family: var(--font-family-tech);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
 }
 
 .t-gamma {
-    font-family: var(--font-family-tech);
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 400;
+  font-family: var(--font-family-tech);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
 }
 
 .container {
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template-rows: 75% 25%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'header content' 'header content' 'footer content';
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 75% 25%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "header content" "header content" "footer content";
 }
 
 .container .header {
-    grid-area: header;
+  grid-area: header;
 }
 
 .container > .content {
-    grid-area: content;
+  grid-area: content;
 }
 
-.container .footer {
-    grid-area: footer;
+.container footer {
+  grid-area: "footer";
 }
 
 .content {
-    display: grid;
-    grid-area: content;
+  display: grid;
+  grid-area: content;
+}
+
+@media (max-width: 1400px) {
+}
+
+/* RESPONSIVE: Tablet */
+
+@media (max-width: 1000px) {
+}
+
+/* RESPONSIVE: Mobile */
+
+@media (max-width: 740px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "header" "content" "footer ";
+  }
 }
