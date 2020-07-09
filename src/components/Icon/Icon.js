@@ -9,26 +9,20 @@
  * in writing, software distributed on an "AS IS" BASIS, WITHOUT-
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
+import React from "react";
+import { ReactComponent as Down } from "./icons/down.svg";
+import { ReactComponent as Right } from "./icons/right.svg";
 
-import { useState } from "react";
-
-const useForm = () => {
-  const [formData, setFormData] = useState({});
-
-  const handleSubmit = (event, callback) => {
-    event.preventDefault();
-
-    const data = {};
-
-    for (let [key, value] of new FormData(event.target).entries()) {
-      data[key] = value;
-    }
-
-    setFormData(data);
-    callback(data);
-  };
-
-  return { formData, handleSubmit };
+const icons = {
+  down: <Down />,
+  right: <Right />,
 };
 
-export default useForm;
+const Icon = ({ name }) => {
+  const classes = ["icon"];
+  classes.push(`icon--${name}`);
+
+  return <span className={classes.join(" ")}>{icons[name]}</span>;
+};
+
+export default Icon;

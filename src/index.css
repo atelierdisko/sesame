@@ -49,6 +49,7 @@ h2 {
   font-size: 2.125rem;
   line-height: 1.25em;
   font-weight: 400;
+  margin-top: calc(var(--spacing-unit) * 0.5);
 }
 
 .t-alpha {

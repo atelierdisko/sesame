@@ -1,5 +1,6 @@
 import React from "react";
 import "./Button.css";
+import Icon from "../Icon/Icon";
 
 const Button = ({
   isPrimary,
@@ -19,6 +20,7 @@ const Button = ({
   return (
     <button {...rest} className={classes.join(" ")}>
       {children}
+      <Icon name="right" />
     </button>
   );
 };

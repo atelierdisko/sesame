@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Textarea.css";
 
 const Textarea = ({
@@ -8,9 +8,22 @@ const Textarea = ({
   maxCharacterCount,
   ...rest
 }) => {
+  const [focused, setFocused] = useState(false);
+  const classes = ["textarea"];
+
+  if (focused) {
+    classes.push("textarea--focused");
+  }
+
   return (
-    <div className="textarea">
-      <textarea {...rest} className="t-alpha" defaultValue={children} />
+    <div className={classes.join(" ")}>
+      <textarea
+        {...rest}
+        className="t-alpha"
+        defaultValue={children}
+        onBlur={() => setFocused(false)}
+        onFocus={() => setFocused(true)}
+      />
 
       <span className="character-count t-alpha">
         {characterCount}/{maxCharacterCount}

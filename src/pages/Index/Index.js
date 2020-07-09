@@ -15,7 +15,6 @@ import axios from "axios";
 import Button from "../../components/Button/Button";
 import Textarea from "../../components/Textarea/Textarea";
 import Select from "../../components/Select/Select";
-import useForm from "../../hooks/useForm";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Input from "../../components/Input/Input";
@@ -25,14 +24,10 @@ import * as clipboard from "clipboard-polyfill";
 import "./Index.css";
 
 const Index = () => {
-  const { handleSubmit } = useForm();
-
   const [loading, setLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [characterCount, setCharacterCount] = useState(0);
   const [link, setLink] = useState(null);
-  const [passphrase, setPassphrase] = useState(null);
-
   const passphraseField = useRef(null);
 
   const passphraseAutoLength = 6;
@@ -42,14 +37,10 @@ const Index = () => {
   useEffect(() => {
     if (characterCount >= minCharacterCount) {
       setSubmitDisabled(false);
+    } else {
+      setSubmitDisabled(true);
     }
   }, [characterCount]);
-
-  useEffect(() => {
-    if (passphraseField.current) {
-      passphraseField.current.value = passphrase;
-    }
-  }, [passphrase]);
 
   const onTextareaChange = (event) => {
     setCharacterCount(event.target.value.length);
@@ -79,17 +70,34 @@ const Index = () => {
     return passphrase;
   };
 
-  const onSubmit = async (data) => {
-    setPassphrase(data.passphrase ? data.passphrase : generatePassphrase());
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setLoading(true);
 
+    const formData = {};
+
+    for (let [key, value] of new FormData(event.target).entries()) {
+      formData[key] = value;
+    }
+
+    if (!formData.passphrase) {
+      const passphrase = generatePassphrase();
+
+      formData.passphrase = passphrase;
+      passphraseField.current.value = passphrase;
+    }
+
+    console.log(formData);
+
     try {
-      const cipher = AES.encrypt(data.secret, data.passphrase).toString();
+      const cipher = AES.encrypt(
+        formData.secret,
+        formData.passphrase
+      ).toString();
 
       const response = await axios.post(`/api/secret`, {
         secret: cipher,
-        lifetime: data.lifetime,
+        lifetime: formData.lifetime,
       });
 
       if (typeof window !== undefined) {
@@ -116,7 +124,7 @@ const Index = () => {
 
       {!link ? (
         <div className="content content--index">
-          <form onSubmit={(event) => handleSubmit(event, onSubmit)}>
+          <form onSubmit={(event) => handleSubmit(event)}>
             <Textarea
               name="secret"
               id="secret"
@@ -132,7 +140,9 @@ const Index = () => {
                 Wähle ein sicheres Passwort zum Entschlüsseln oder{" "}
                 <span
                   className="generate-passphrase"
-                  onClick={() => setPassphrase(generatePassphrase())}
+                  onClick={() => {
+                    passphraseField.current.value = generatePassphrase();
+                  }}
                 >
                   generiere eins
                 </span>
@@ -174,13 +184,7 @@ const Index = () => {
             <div className="passphrase">
               <span>
                 <Label htmlFor="passphrase">Passphrase</Label>
-                <Input
-                  type="text"
-                  name="passphrase"
-                  id="passphrase"
-                  value={passphrase}
-                  readOnly
-                />
+                <Input type="text" name="passphrase" id="passphrase" readOnly />
               </span>
             </div>
 
