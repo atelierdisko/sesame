@@ -22,6 +22,7 @@ import AES from "crypto-js/aes";
 import CryptoJS from "crypto-js";
 import "./Reveal.css";
 import Textarea from "../../components/Textarea/Textarea";
+import getFormData from "../../helpers/getFormData";
 
 const Reveal = () => {
   let { hash } = useParams();
@@ -34,44 +35,9 @@ const Reveal = () => {
   const [exists, setExists] = useState(true);
   const [secret, setSecret] = useState(null);
 
-  const onPassphraseChange = (event) => {
-    setPassphrase(event.target.value);
-  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const checkToken = async () => {
-    try {
-      await axios.get(`/api/secret/${hash}/exists`);
-      setExists(true);
-    } catch (error) {
-      setExists(false);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    checkToken();
-  }, []);
-
-  const decrypt = (secret, passphrase) => {
-    console.log(secret, passphrase);
-
-    const decrypted = AES.decrypt(secret, passphrase).toString(
-      CryptoJS.enc.Utf8
-    );
-
-    console.log(decrypted);
-
-    if (!decrypted) {
-      setPassphraseError(true);
-      setSecret(secret);
-    } else {
-      setPassphraseError(false);
-      setSecret(decrypted);
-    }
-  };
-
-  const reveal = async () => {
     // if secret was fetched already try to re-decrypt it and exit
     if (secret) {
       decrypt(secret, passphrase);
@@ -90,6 +56,51 @@ const Reveal = () => {
       setLoading(false);
     }
   };
+
+  const decrypt = (secret, passphrase) => {
+    const decrypted = AES.decrypt(secret, passphrase).toString(
+      CryptoJS.enc.Utf8
+    );
+
+    if (!decrypted) {
+      setPassphraseError(true);
+      setSecret(secret);
+    } else {
+      setPassphraseError(false);
+      setSecret(decrypted);
+    }
+  };
+
+  const checkToken = async () => {
+    setLoading(true);
+
+    try {
+      await axios.get(`/api/secret/${hash}/exists`);
+      setExists(true);
+    } catch (error) {
+      setExists(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
+  if (!secret && loading) {
+    return (
+      <Fragment>
+        <Header />
+
+        <div className="content content--fetching">
+          <h2 className="h-beta">Fetching secret…</h2>
+        </div>
+
+        <Footer />
+      </Fragment>
+    );
+  }
 
   if (!exists) {
     return (
@@ -135,7 +146,7 @@ const Reveal = () => {
       </Header>
 
       <div className="content content--reveal">
-        <span>
+        <form onSubmit={(event) => handleSubmit(event)}>
           <div
             className={`passphrase ${
               passphraseError ? "passphrase--error" : ""
@@ -149,19 +160,15 @@ const Reveal = () => {
                 type="text"
                 name="passphrase"
                 id="passphrase"
-                onChange={(event) => onPassphraseChange(event)}
+                onChange={(event) => setPassphrase(event.target.value)}
               />
             </span>
           </div>
 
-          <Button
-            type="submit"
-            isDisabled={loading || !passphrase}
-            onClick={() => reveal()}
-          >
+          <Button type="submit" isDisabled={loading || !passphrase}>
             Nachricht entschlüsseln
           </Button>
-        </span>
+        </form>
       </div>
 
       <Footer />

@@ -20,10 +20,11 @@ const Textarea = ({
       <textarea
         {...rest}
         className="t-alpha"
-        defaultValue={children}
         onBlur={() => setFocused(false)}
         onFocus={() => setFocused(true)}
-      />
+      >
+        {children}
+      </textarea>
 
       <span className="character-count t-alpha">
         {characterCount}/{maxCharacterCount}

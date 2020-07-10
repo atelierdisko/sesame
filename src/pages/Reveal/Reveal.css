@@ -38,6 +38,12 @@
   background: var(--color-red);
 }
 
+.content--fetching {
+  padding: 40px 30px;
+  color: var(--color-white);
+  background: var(--color-purple);
+}
+
 .content--revealed .textarea {
   height: 100%;
 }

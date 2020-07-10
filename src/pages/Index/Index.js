@@ -9,8 +9,7 @@
  * in writing, software distributed on an "AS IS" BASIS, WITHOUT-
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
-
-import React, { Fragment, useEffect, useState, useRef } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Textarea from "../../components/Textarea/Textarea";
@@ -21,73 +20,32 @@ import Input from "../../components/Input/Input";
 import Label from "../../components/Label/Label";
 import AES from "crypto-js/aes";
 import * as clipboard from "clipboard-polyfill";
+import getFormData from "../../helpers/getFormData";
+import generatePassphrase from "../../helpers/generatePassphrase";
 import "./Index.css";
 
 const Index = () => {
   const [loading, setLoading] = useState(false);
-  const [submitDisabled, setSubmitDisabled] = useState(true);
   const [characterCount, setCharacterCount] = useState(0);
-  const [link, setLink] = useState(null);
-  const passphraseField = useRef(null);
+  const [link, setLink] = useState("");
+  const [passphrase, setPassphrase] = useState("");
 
-  const passphraseAutoLength = 6;
   const maxCharacterCount = 10000;
   const minCharacterCount = 1;
 
-  useEffect(() => {
-    if (characterCount >= minCharacterCount) {
-      setSubmitDisabled(false);
-    } else {
-      setSubmitDisabled(true);
-    }
-  }, [characterCount]);
-
-  const onTextareaChange = (event) => {
-    setCharacterCount(event.target.value.length);
-  };
-
   const copyToClipboard = async () => {
     await clipboard.writeText(link);
-  };
-
-  const generatePassphrase = () => {
-    function number() {
-      return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-    }
-
-    function character() {
-      return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-    }
-
-    let passphrase = "";
-
-    for (let length = 0; length < passphraseAutoLength; length++) {
-      let generator = Math.random() >= 0.5 ? number : character;
-
-      passphrase += generator();
-    }
-
-    return passphrase;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
-    const formData = {};
-
-    for (let [key, value] of new FormData(event.target).entries()) {
-      formData[key] = value;
-    }
+    const formData = getFormData(event.target);
 
     if (!formData.passphrase) {
-      const passphrase = generatePassphrase();
-
-      formData.passphrase = passphrase;
-      passphraseField.current.value = passphrase;
+      setPassphrase(generatePassphrase());
     }
-
-    console.log(formData);
 
     try {
       const cipher = AES.encrypt(
@@ -104,6 +62,7 @@ const Index = () => {
         setLink(`${window.location.origin}/reveal/${response.data.hash}`);
       }
     } catch (error) {
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -131,7 +90,7 @@ const Index = () => {
               placeholder="Your Super Secret Content goes here..."
               characterCount={characterCount}
               maxCharacterCount={maxCharacterCount}
-              onChange={(event) => onTextareaChange(event)}
+              onChange={(event) => setCharacterCount(event.target.value.length)}
               required
             />
 
@@ -140,9 +99,7 @@ const Index = () => {
                 Wähle ein sicheres Passwort zum Entschlüsseln oder{" "}
                 <span
                   className="generate-passphrase"
-                  onClick={() => {
-                    passphraseField.current.value = generatePassphrase();
-                  }}
+                  onClick={() => setPassphrase(generatePassphrase())}
                 >
                   generiere eins
                 </span>
@@ -150,7 +107,8 @@ const Index = () => {
 
               <Input
                 type="text"
-                ref={passphraseField}
+                value={passphrase}
+                onChange={(event) => setPassphrase(event.target.value)}
                 name="passphrase"
                 id="passphrase"
               />
@@ -170,7 +128,7 @@ const Index = () => {
               type="submit"
               isPrimary={true}
               isLoading={loading}
-              isDisabled={submitDisabled}
+              isDisabled={characterCount < minCharacterCount}
             >
               Generate Secret Link
             </Button>
@@ -179,13 +137,12 @@ const Index = () => {
       ) : (
         <div className="content content--share">
           <span>
-            <Textarea readOnly>{link}</Textarea>
+            <div className="link">
+              {link}
 
-            <div className="passphrase">
-              <span>
-                <Label htmlFor="passphrase">Passphrase</Label>
-                <Input type="text" name="passphrase" id="passphrase" readOnly />
-              </span>
+              <br />
+              <br />
+              <span className="link__passphrase">Passphrase: {passphrase}</span>
             </div>
 
             <Button

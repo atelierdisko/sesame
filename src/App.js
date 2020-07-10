@@ -1,8 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Index from "./pages/Index/Index";
 import Reveal from "./pages/Reveal/Reveal";
-import NoMatch from "./pages/NoMatch";
 
 const App = () => {
   return (
@@ -18,9 +22,7 @@ const App = () => {
               <Reveal />
             </Route>
 
-            <Route path="*">
-              <NoMatch />
-            </Route>
+            <Redirect from="*" to="/" />
           </Switch>
         </div>
       </Router>

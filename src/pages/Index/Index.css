@@ -40,8 +40,10 @@
   height: 25%;
 }
 
+/* share page */
+
 .content--share .textarea {
-  height: 50%;
+  height: 75%;
 }
 
 .content--share .passphrase {
@@ -59,4 +61,15 @@
 
 .content--share .button {
   height: 25%;
+}
+
+.content--share .link {
+  word-break: break-all;
+  padding: 40px 30px;
+  font-size: 2.125rem;
+  line-height: 1.25em;
+}
+
+.content--share .link .link__passphrase {
+  color: var(--color-purple);
 }

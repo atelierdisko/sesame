@@ -15,8 +15,7 @@
   box-sizing: border-box;
   min-height: 140px;
   outline: none;
-
-  transition: background-color 400ms linear;
+  overflow: hidden;
 }
 
 .button > span.icon {
