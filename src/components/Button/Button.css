@@ -21,7 +21,7 @@
 .button > span.icon {
   position: absolute;
   right: calc(5 * var(--spacing-unit));
-  transition: right 140ms linear, opacity 80ms linear;
+  transition: right 140ms linear, opacity 80ms ease-in-out;
   opacity: 1;
 }
 

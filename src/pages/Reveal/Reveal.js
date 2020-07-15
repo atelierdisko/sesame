@@ -10,8 +10,8 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-import React, { useEffect, useState, Fragment } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, {useEffect, useState, Fragment} from "react";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
@@ -25,7 +25,7 @@ import Textarea from "../../components/Textarea/Textarea";
 import getFormData from "../../helpers/getFormData";
 
 const Reveal = () => {
-  let { hash } = useParams();
+  let {hash} = useParams();
 
   const [loading, setLoading] = useState(true);
 
@@ -47,9 +47,9 @@ const Reveal = () => {
 
     try {
       setLoading(true);
-
-      const { data } = await axios.get(`/api/secret/${hash}`);
+      const {data} = await axios.get(`/api/secret/${hash}`);
       decrypt(data.secret, passphrase);
+
     } catch (error) {
       console.log(error.response);
     } finally {
@@ -61,6 +61,8 @@ const Reveal = () => {
     const decrypted = AES.decrypt(secret, passphrase).toString(
       CryptoJS.enc.Utf8
     );
+
+    console.log(secret, passphrase, decrypted);
 
     if (!decrypted) {
       setPassphraseError(true);
@@ -91,13 +93,13 @@ const Reveal = () => {
   if (!secret && loading) {
     return (
       <Fragment>
-        <Header />
+        <Header/>
 
         <div className="content content--fetching">
           <h2 className="h-beta">Fetching secret…</h2>
         </div>
 
-        <Footer />
+        <Footer/>
       </Fragment>
     );
   }
@@ -105,7 +107,7 @@ const Reveal = () => {
   if (!exists) {
     return (
       <Fragment>
-        <Header />
+        <Header/>
 
         <div className="content content--removed">
           <h2 className="h-beta">
@@ -116,7 +118,7 @@ const Reveal = () => {
           </h2>
         </div>
 
-        <Footer />
+        <Footer/>
       </Fragment>
     );
   }
@@ -124,13 +126,13 @@ const Reveal = () => {
   if (secret && !passphraseError) {
     return (
       <Fragment>
-        <Header />
+        <Header/>
 
         <div className="content content--revealed">
           <Textarea>{secret}</Textarea>
         </div>
 
-        <Footer />
+        <Footer/>
       </Fragment>
     );
   }
@@ -171,7 +173,7 @@ const Reveal = () => {
         </form>
       </div>
 
-      <Footer />
+      <Footer/>
     </Fragment>
   );
 };

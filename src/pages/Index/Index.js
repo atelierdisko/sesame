@@ -9,7 +9,7 @@
  * in writing, software distributed on an "AS IS" BASIS, WITHOUT-
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
-import React, { Fragment, useState } from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Textarea from "../../components/Textarea/Textarea";
@@ -24,6 +24,31 @@ import getFormData from "../../helpers/getFormData";
 import generatePassphrase from "../../helpers/generatePassphrase";
 import "./Index.css";
 
+const CopyButton = ({link}) => {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = async () => {
+    await clipboard.writeText(link);
+    setCopied(true);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
+  return (
+    <Button
+      type="submit"
+      isPrimary={true}
+      onClick={() => copyToClipboard()}>
+      {copied ? 'Kopiert!' : 'Link kopieren'}
+    </Button>
+  )
+};
+
 const Index = () => {
   const [loading, setLoading] = useState(false);
   const [characterCount, setCharacterCount] = useState(0);
@@ -33,10 +58,6 @@ const Index = () => {
   const maxCharacterCount = 10000;
   const minCharacterCount = 1;
 
-  const copyToClipboard = async () => {
-    await clipboard.writeText(link);
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -44,7 +65,7 @@ const Index = () => {
     const formData = getFormData(event.target);
 
     if (!formData.passphrase) {
-      setPassphrase(generatePassphrase());
+      formData.passphrase = generatePassphrase();
     }
 
     try {
@@ -57,6 +78,8 @@ const Index = () => {
         secret: cipher,
         lifetime: formData.lifetime,
       });
+
+      setPassphrase(formData.passphrase);
 
       if (typeof window !== undefined) {
         setLink(`${window.location.origin}/reveal/${response.data.hash}`);
@@ -108,7 +131,7 @@ const Index = () => {
               <Input
                 type="text"
                 value={passphrase}
-                onChange={(event) => setPassphrase(event.target.value)}
+                onChange={event => setPassphrase(event.target.value.replace(/[^0-9a-z]/gi, ''))}
                 name="passphrase"
                 id="passphrase"
               />
@@ -136,27 +159,19 @@ const Index = () => {
         </div>
       ) : (
         <div className="content content--share">
-          <span>
-            <div className="link">
-              {link}
+          <div className="link">
+            {link}
 
-              <br />
-              <br />
-              <span className="link__passphrase">Passphrase: {passphrase}</span>
-            </div>
+            <br/>
+            <br/>
+            <span className="link__passphrase">Passphrase: {passphrase}</span>
+          </div>
 
-            <Button
-              type="submit"
-              isPrimary={true}
-              onClick={() => copyToClipboard()}
-            >
-              Link kopieren
-            </Button>
-          </span>
+          <CopyButton link={link}/>
         </div>
       )}
 
-      <Footer />
+      <Footer/>
     </Fragment>
   );
 };

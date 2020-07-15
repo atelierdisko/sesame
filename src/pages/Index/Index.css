@@ -42,6 +42,11 @@
 
 /* share page */
 
+.content--share  {
+  display: flex;
+  flex-direction: column;
+}
+
 .content--share .textarea {
   height: 75%;
 }
@@ -61,6 +66,7 @@
 
 .content--share .button {
   height: 25%;
+  margin-top: auto;
 }
 
 .content--share .link {
