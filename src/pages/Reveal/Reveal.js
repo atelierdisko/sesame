@@ -126,7 +126,12 @@ const Reveal = () => {
   if (secret && !passphraseError) {
     return (
       <Fragment>
-        <Header/>
+        <Header>
+          <h2 className="h-beta">
+            Et voilà —<br/>
+            Open Sesame.
+          </h2>
+        </Header>
 
         <div className="content content--revealed">
           <Textarea>{secret}</Textarea>
