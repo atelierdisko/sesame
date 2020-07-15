@@ -42,7 +42,7 @@
 
 /* share page */
 
-.content--share  {
+.content--share {
   display: flex;
   flex-direction: column;
 }

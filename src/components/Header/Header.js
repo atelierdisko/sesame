@@ -12,11 +12,14 @@
 
 import React from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = ({ children }) => {
   return (
     <header>
-      <h1 className="h-alpha">Sesame</h1>
+      <Link to={"/"} className="h-alpha">
+        Sesame
+      </Link>
 
       <div>{children}</div>
     </header>

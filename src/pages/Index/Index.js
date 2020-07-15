@@ -9,7 +9,7 @@
  * in writing, software distributed on an "AS IS" BASIS, WITHOUT-
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
-import React, {Fragment, useState, useEffect} from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Textarea from "../../components/Textarea/Textarea";
@@ -24,7 +24,7 @@ import getFormData from "../../helpers/getFormData";
 import generatePassphrase from "../../helpers/generatePassphrase";
 import "./Index.css";
 
-const CopyButton = ({link}) => {
+const CopyButton = ({ link }) => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
@@ -40,13 +40,10 @@ const CopyButton = ({link}) => {
   }, [copied]);
 
   return (
-    <Button
-      type="submit"
-      isPrimary={true}
-      onClick={() => copyToClipboard()}>
-      {copied ? 'Kopiert!' : 'Link kopieren'}
+    <Button type="submit" isPrimary={true} onClick={() => copyToClipboard()}>
+      {copied ? "Kopiert!" : "Link kopieren"}
     </Button>
-  )
+  );
 };
 
 const Index = () => {
@@ -74,10 +71,13 @@ const Index = () => {
         formData.passphrase
       ).toString();
 
-      const response = await axios.post(`${process.env.REACT_APP_API_HOST}/api/secret`, {
-        secret: cipher,
-        lifetime: formData.lifetime,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_HOST}/api/secret`,
+        {
+          secret: cipher,
+          lifetime: formData.lifetime,
+        }
+      );
 
       setPassphrase(formData.passphrase);
 
@@ -131,7 +131,9 @@ const Index = () => {
               <Input
                 type="text"
                 value={passphrase}
-                onChange={event => setPassphrase(event.target.value.replace(/[^0-9a-z]/gi, ''))}
+                onChange={(event) =>
+                  setPassphrase(event.target.value.replace(/[^0-9a-z]/gi, ""))
+                }
                 name="passphrase"
                 id="passphrase"
               />
@@ -144,6 +146,10 @@ const Index = () => {
               >
                 <option value="7 days">7 days</option>
                 <option value="1 day">1 day</option>
+                <option value="8 hours">8 hours</option>
+                <option value="2 hours">2 hours</option>
+                <option value="1 hour">1 hour</option>
+                <option value="10 minutes">10 minutes</option>
               </Select>
             </div>
 
@@ -162,16 +168,16 @@ const Index = () => {
           <div className="link">
             {link}
 
-            <br/>
-            <br/>
+            <br />
+            <br />
             <span className="link__passphrase">Passphrase: {passphrase}</span>
           </div>
 
-          <CopyButton link={link}/>
+          <CopyButton link={link} />
         </div>
       )}
 
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 };

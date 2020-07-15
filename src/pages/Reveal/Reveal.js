@@ -10,8 +10,8 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-import React, {useEffect, useState, Fragment} from "react";
-import {Link, useParams} from "react-router-dom";
+import React, { useEffect, useState, Fragment } from "react";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
@@ -25,7 +25,7 @@ import Textarea from "../../components/Textarea/Textarea";
 import getFormData from "../../helpers/getFormData";
 
 const Reveal = () => {
-  let {hash} = useParams();
+  let { hash } = useParams();
 
   const [loading, setLoading] = useState(true);
 
@@ -47,9 +47,10 @@ const Reveal = () => {
 
     try {
       setLoading(true);
-      const {data} = await axios.get(`${process.env.REACT_APP_API_HOST}/api/secret/${hash}`);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_HOST}/api/secret/${hash}`
+      );
       decrypt(data.secret, passphrase);
-
     } catch (error) {
       console.log(error.response);
     } finally {
@@ -77,7 +78,9 @@ const Reveal = () => {
     setLoading(true);
 
     try {
-      await axios.get(`${process.env.REACT_APP_API_HOST}/api/secret/${hash}/exists`);
+      await axios.get(
+        `${process.env.REACT_APP_API_HOST}/api/secret/${hash}/exists`
+      );
       setExists(true);
     } catch (error) {
       setExists(false);
@@ -93,13 +96,11 @@ const Reveal = () => {
   if (!secret && loading) {
     return (
       <Fragment>
-        <Header/>
+        <Header />
 
-        <div className="content content--fetching">
-          <h2 className="h-beta">Fetching secret…</h2>
-        </div>
+        <div className="content content--fetching">{/* loader ? */}</div>
 
-        <Footer/>
+        <Footer />
       </Fragment>
     );
   }
@@ -107,7 +108,7 @@ const Reveal = () => {
   if (!exists) {
     return (
       <Fragment>
-        <Header/>
+        <Header />
 
         <div className="content content--removed">
           <h2 className="h-beta">
@@ -118,7 +119,7 @@ const Reveal = () => {
           </h2>
         </div>
 
-        <Footer/>
+        <Footer />
       </Fragment>
     );
   }
@@ -128,7 +129,7 @@ const Reveal = () => {
       <Fragment>
         <Header>
           <h2 className="h-beta">
-            Et voilà —<br/>
+            Et voilà —<br />
             Open Sesame.
           </h2>
         </Header>
@@ -137,7 +138,7 @@ const Reveal = () => {
           <Textarea>{secret}</Textarea>
         </div>
 
-        <Footer/>
+        <Footer />
       </Fragment>
     );
   }
@@ -178,7 +179,7 @@ const Reveal = () => {
         </form>
       </div>
 
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 };

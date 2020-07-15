@@ -41,7 +41,7 @@
 .content--fetching {
   padding: 40px 30px;
   color: var(--color-white);
-  background: var(--color-purple);
+  background: var(--color-mid-grey);
 }
 
 .content--revealed .textarea {
