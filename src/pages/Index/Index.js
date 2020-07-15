@@ -74,7 +74,7 @@ const Index = () => {
         formData.passphrase
       ).toString();
 
-      const response = await axios.post(`/api/secret`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_HOST}/api/secret`, {
         secret: cipher,
         lifetime: formData.lifetime,
       });
