@@ -1,6 +1,5 @@
 .button {
   display: block;
-  padding: 0.8em 2em 0.7em;
   border: none;
   position: relative;
   margin: 0;
@@ -16,6 +15,7 @@
   min-height: 140px;
   outline: none;
   overflow: hidden;
+  transition: background-color 150ms linear;
 }
 
 .button > span.icon {

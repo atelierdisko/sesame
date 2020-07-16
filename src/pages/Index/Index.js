@@ -24,6 +24,14 @@ import getFormData from "../../helpers/getFormData";
 import generatePassphrase from "../../helpers/generatePassphrase";
 import "./Index.css";
 
+const DeleteButton = ({ hash, ...rest }) => {
+  return (
+    <Button isDangerous={true} indicator={false} {...rest}>
+      Löschen
+    </Button>
+  );
+};
+
 const CopyButton = ({ link }) => {
   const [copied, setCopied] = useState(false);
 
@@ -40,7 +48,7 @@ const CopyButton = ({ link }) => {
   }, [copied]);
 
   return (
-    <Button type="submit" isPrimary={true} onClick={() => copyToClipboard()}>
+    <Button isPrimary={true} onClick={() => copyToClipboard()}>
       {copied ? "Kopiert!" : "Link kopieren"}
     </Button>
   );
@@ -49,13 +57,13 @@ const CopyButton = ({ link }) => {
 const Index = () => {
   const [loading, setLoading] = useState(false);
   const [characterCount, setCharacterCount] = useState(0);
-  const [link, setLink] = useState("");
   const [passphrase, setPassphrase] = useState("");
+  const [secret, setSecret] = useState(null);
 
   const maxCharacterCount = 10000;
   const minCharacterCount = 1;
 
-  const handleSubmit = async (event) => {
+  const handleCreation = async (event) => {
     event.preventDefault();
     setLoading(true);
 
@@ -71,7 +79,7 @@ const Index = () => {
         formData.passphrase
       ).toString();
 
-      const response = await axios.post(
+      const { data } = await axios.post(
         `${process.env.REACT_APP_API_HOST}/api/secret`,
         {
           secret: cipher,
@@ -80,14 +88,25 @@ const Index = () => {
       );
 
       setPassphrase(formData.passphrase);
-
-      if (typeof window !== undefined) {
-        setLink(`${window.location.origin}/reveal/${response.data.hash}`);
-      }
+      setSecret(data);
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDeletion = async () => {
+    await axios.delete(
+      `${process.env.REACT_APP_API_HOST}/api/secret/${secret.hash}`
+    );
+    setSecret(null);
+    setPassphrase("");
+  };
+
+  const getLink = () => {
+    if (typeof window !== undefined) {
+      return `${window.location.origin}/reveal/${secret.hash}`;
     }
   };
 
@@ -104,9 +123,9 @@ const Index = () => {
         </h2>
       </Header>
 
-      {!link ? (
+      {!secret ? (
         <div className="content content--index">
-          <form onSubmit={(event) => handleSubmit(event)}>
+          <form onSubmit={(event) => handleCreation(event)}>
             <Textarea
               name="secret"
               id="secret"
@@ -166,14 +185,20 @@ const Index = () => {
       ) : (
         <div className="content content--share">
           <div className="link">
-            {link}
-
-            <br />
-            <br />
-            <span className="link__passphrase">Passphrase: {passphrase}</span>
+            <span className="link__url">{getLink()}</span>
+            <span className="link__passphrase">
+              <span className="passphrase-note t-beta">
+                Passphrase nicht vergessen:
+              </span>
+              <br />
+              {passphrase}
+            </span>
           </div>
 
-          <CopyButton link={link} />
+          <div className="actions">
+            <DeleteButton onClick={() => handleDeletion()} />
+            <CopyButton link={getLink()} />
+          </div>
         </div>
       )}
 

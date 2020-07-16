@@ -64,18 +64,35 @@
   width: 100%;
 }
 
-.content--share .button {
+.content--share .actions {
   height: 25%;
   margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.content--share .actions .button {
+  height: 100%;
 }
 
 .content--share .link {
-  word-break: break-all;
   padding: 40px 30px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
   font-size: 2.125rem;
   line-height: 1.25em;
 }
 
+.content--share .link .link__url {
+  word-break: break-all;
+}
+
 .content--share .link .link__passphrase {
   color: var(--color-purple);
+  margin-top: auto;
+}
+
+.content--share .link .passphrase-note {
+  color: var(--color-black);
 }

@@ -8,6 +8,7 @@ const Button = ({
   isDisabled,
   isLoading,
   children,
+  indicator = true,
   ...rest
 }) => {
   const classes = ["button"];
@@ -20,7 +21,7 @@ const Button = ({
   return (
     <button {...rest} className={classes.join(" ")}>
       {children}
-      <Icon name="right" />
+      {indicator && <Icon name="right" />}
     </button>
   );
 };

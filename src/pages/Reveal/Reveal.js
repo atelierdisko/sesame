@@ -63,8 +63,6 @@ const Reveal = () => {
       CryptoJS.enc.Utf8
     );
 
-    console.log(secret, passphrase, decrypted);
-
     if (!decrypted) {
       setPassphraseError(true);
       setSecret(secret);
@@ -164,8 +162,10 @@ const Reveal = () => {
               <Label htmlFor="passphrase">
                 {passphraseError ? "Passphrase ungültig" : "Passphrase"}
               </Label>
+
               <Input
-                type="text"
+                value={passphrase}
+                type="password"
                 name="passphrase"
                 id="passphrase"
                 onChange={(event) => setPassphrase(event.target.value)}
@@ -173,7 +173,11 @@ const Reveal = () => {
             </span>
           </div>
 
-          <Button type="submit" isDisabled={loading || !passphrase}>
+          <Button
+            type="submit"
+            isPrimary={true}
+            isDisabled={loading || !passphrase}
+          >
             Nachricht entschlüsseln
           </Button>
         </form>
