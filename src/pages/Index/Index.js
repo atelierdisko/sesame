@@ -79,13 +79,10 @@ const Index = () => {
         formData.passphrase
       ).toString();
 
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API_HOST}/api/secret`,
-        {
-          secret: cipher,
-          lifetime: formData.lifetime,
-        }
-      );
+      const { data } = await axios.post(`/api/secret`, {
+        secret: cipher,
+        lifetime: formData.lifetime,
+      });
 
       setPassphrase(formData.passphrase);
       setSecret(data);
@@ -97,9 +94,7 @@ const Index = () => {
   };
 
   const handleDeletion = async () => {
-    await axios.delete(
-      `${process.env.REACT_APP_API_HOST}/api/secret/${secret.hash}`
-    );
+    await axios.delete(`/api/secret/${secret.hash}`);
     setSecret(null);
     setPassphrase("");
   };

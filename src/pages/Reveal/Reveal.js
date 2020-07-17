@@ -47,9 +47,7 @@ const Reveal = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_HOST}/api/secret/${hash}`
-      );
+      const { data } = await axios.get(`/api/secret/${hash}`);
       decrypt(data.secret, passphrase);
     } catch (error) {
       console.log(error.response);
@@ -76,9 +74,7 @@ const Reveal = () => {
     setLoading(true);
 
     try {
-      await axios.get(
-        `${process.env.REACT_APP_API_HOST}/api/secret/${hash}/exists`
-      );
+      await axios.get(`/api/secret/${hash}/exists`);
       setExists(true);
     } catch (error) {
       setExists(false);
