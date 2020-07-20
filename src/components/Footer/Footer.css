@@ -17,6 +17,5 @@ footer {
   display: flex;
   align-items: flex-end;
   color: rgba(255, 255, 255, 0.5);
-  min-height: 140px;
   box-sizing: border-box;
 }

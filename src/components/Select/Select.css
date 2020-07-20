@@ -13,8 +13,6 @@
   padding: calc(1.5 * var(--spacing-unit));
   box-sizing: border-box;
   outline: none;
-  grid-row: 1;
-  grid-column: 1;
 }
 
 .select .icon {

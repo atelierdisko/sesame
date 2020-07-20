@@ -1,8 +1,8 @@
 .textarea {
   display: grid;
   padding: calc(3 * var(--spacing-unit));
-  grid-template-rows: auto 20px;
   box-sizing: border-box;
+  grid-template-rows: auto 20px;
 }
 
 .textarea.textarea--focused {

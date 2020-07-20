@@ -9,9 +9,10 @@ const Button = ({
   isLoading,
   children,
   indicator = true,
+  className,
   ...rest
 }) => {
-  const classes = ["button"];
+  const classes = ["button", className];
 
   if (isPrimary) classes.push("button--primary");
   if (isDangerous) classes.push("button--dangerous");

@@ -2,117 +2,111 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
 
 :root {
-  --color-blue: rgb(13, 38, 252);
-  --color-dark-grey: #454545;
-  --color-mid-grey: #d2d2d8;
-  --color-light-grey: #e8e8f0;
-  --color-white: #fff;
-  --color-black: #000;
-  --color-purple: #916bff;
-  --color-cyan: #00f5d4;
-  --color-yellow: #fff74c;
-  --color-red: #e83151;
-  --spacing-unit: 8px;
+    --color-blue: rgb(13, 38, 252);
+    --color-dark-grey: #454545;
+    --color-mid-grey: #d2d2d8;
+    --color-light-grey: #e8e8f0;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-purple: #916bff;
+    --color-cyan: #00f5d4;
+    --color-light-yellow: #FFF74C;
+    --color-yellow: #fff74c;
+    --color-red: #e83151;
+    --spacing-unit: 8px;
 
-  --font-family-default: "IBM Plex Sans", sans-serif;
-  --font-family-tech: "IBM Plex Mono", monospace;
+    --font-family-default: "IBM Plex Sans", sans-serif;
+    --font-family-tech: "IBM Plex Mono", monospace;
 }
 
 ::selection {
-  background: var(--color-yellow);
+    background: var(--color-yellow);
 }
 
 body {
-  font-family: var(--font-family-default);
-  margin: 0;
+    font-family: var(--font-family-default);
+    margin: 0;
 }
 
 a {
-  color: inherit;
+    color: inherit;
 }
 
 h1,
 h2 {
-  margin: 0;
+    margin: 0;
 }
 
 .h-alpha {
-  font-family: var(--font-family-default);
-  font-size: 3.625rem;
-  font-weight: 400;
-  line-height: 1em;
-  letter-spacing: 1px;
+    font-family: var(--font-family-default);
+    font-size: 3.625rem;
+    font-weight: 400;
+    line-height: 1em;
+    letter-spacing: 1px;
 }
 
 .h-beta {
-  font-family: var(--font-family-default);
-  font-size: 2.125rem;
-  line-height: 1.25em;
-  font-weight: 400;
-  margin-top: calc(var(--spacing-unit) * 0.5);
+    font-family: var(--font-family-default);
+    font-size: 2.125rem;
+    line-height: 1.25em;
+    font-weight: 400;
+    margin-top: calc(var(--spacing-unit) * 0.5);
 }
 
 .t-alpha {
-  font-family: var(--font-family-tech);
-  font-size: 16px;
-  line-height: 21px;
-  font-weight: 400;
+    font-family: var(--font-family-tech);
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 400;
 }
 
 .t-beta {
-  font-family: var(--font-family-tech);
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 400;
+    font-family: var(--font-family-tech);
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
 }
 
 .t-gamma {
-  font-family: var(--font-family-tech);
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 400;
+    font-family: var(--font-family-tech);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
 }
 
 .container {
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-rows: 75% 25%;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "header content" "header content" "footer content";
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto 150px;
 }
 
-.container .header {
-  grid-area: header;
+footer {
+    grid-row: 3;
+    grid-column: 1;
 }
 
-.container > .content {
-  grid-area: content;
+header {
+    display: contents;
 }
 
-.container footer {
-  grid-area: "footer";
+header:first-child {
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.content {
-  display: grid;
-  grid-area: content;
+header:last-child {
+    grid-column: 1;
+    grid-row: 2;
 }
 
-@media (max-width: 1400px) {
-}
+@media (max-width: 1080px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
 
-/* RESPONSIVE: Tablet */
-
-@media (max-width: 1000px) {
-}
-
-/* RESPONSIVE: Mobile */
-
-@media (max-width: 740px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "header" "content" "footer ";
-  }
+    .container * {
+        grid-column: 1;
+    }
 }

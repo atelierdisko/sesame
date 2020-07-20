@@ -12,14 +12,16 @@
 
 import React from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
 
-const Header = ({ children }) => {
+const Header = ({children, resetHandler, className}) => {
   return (
-    <header>
-      <Link to={"/"} className="h-alpha">
-        Sesame
-      </Link>
+    <header className={className}>
+      <span className="h-alpha">
+        <a href='/' onClick={event => {
+          event.preventDefault();
+          resetHandler()
+        }}>Sesame</a>
+      </span>
 
       <div>{children}</div>
     </header>

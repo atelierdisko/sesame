@@ -10,12 +10,12 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 import React from "react";
-import { ReactComponent as Down } from "./icons/down.svg";
-import { ReactComponent as Right } from "./icons/right.svg";
+import { ReactComponent as ArrowDown } from "./icons/arrow_down.svg";
+import { ReactComponent as ArrowRight } from "./icons/arrow_right.svg";
 
 const icons = {
-  down: <Down />,
-  right: <Right />,
+  down: <ArrowDown />,
+  right: <ArrowRight />,
 };
 
 const Icon = ({ name }) => {

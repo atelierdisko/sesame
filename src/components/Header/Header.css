@@ -11,18 +11,38 @@
  */
 
 header {
-  background: var(--color-purple);
-  color: var(--color-white);
-  padding: calc(3 * var(--spacing-unit));
-  display: grid;
+    color: var(--color-white);
+    padding: calc(3 * var(--spacing-unit));
+}
+
+header > * {
+    background-color: var(--color-purple);
+    background: var(--color-purple);
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, var(--color-purple) 50%, var(--color-yellow) 50%);
+    transition: background-position 300ms, color 1200ms;
+}
+
+header.header--share > * {
+    color: var(--color-black);
+    background-position: -100% 0;
 }
 
 header div {
-  align-self: end;
-  margin-top: calc(3 * var(--spacing-unit));
+    display: flex;
+    flex-direction: column;
+    padding: calc(3 * var(--spacing-unit));
+}
+
+header .t-beta {
+    margin-top: auto;
 }
 
 header .h-alpha {
-  text-decoration: none;
-  font-weight: bolder;
+    padding: calc(3 * var(--spacing-unit));
+    font-weight: bolder;
+}
+
+header .h-alpha > * {
+    text-decoration: none;
 }

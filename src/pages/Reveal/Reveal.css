@@ -10,40 +10,55 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
+.content--reveal,
+.content--revealed,
+.content--removed,
+.content--reveal form {
+    display: contents;
+}
+
 .content--reveal .passphrase {
-  background: var(--color-mid-grey);
-  padding: 40px 30px;
-  box-sizing: border-box;
-  height: 75%;
-  display: flex;
-}
-
-.content--reveal .passphrase.passphrase--error {
-  background: var(--color-red);
-  color: var(--color-white);
-}
-
-.content--reveal .passphrase span {
-  align-self: center;
-  width: 100%;
+    background: var(--color-mid-grey);
+    padding: 40px 30px;
+    box-sizing: border-box;
+    display: flex;
+    grid-column: 2;
+    grid-row: 1 / span 2;
 }
 
 .content--reveal .button {
-  height: 25%;
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.content--reveal .passphrase.passphrase--error {
+    background: var(--color-red);
+    color: var(--color-white);
+}
+
+.content--reveal .passphrase span {
+    align-self: center;
+    width: 100%;
 }
 
 .content--removed {
-  padding: 40px 30px;
-  color: var(--color-white);
-  background: var(--color-red);
+    color: var(--color-white);
+}
+
+.content--removed .h-beta {
+    background: var(--color-red);
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    margin: 0;
+    padding: calc(3 * var(--spacing-unit));
 }
 
 .content--fetching {
-  padding: 40px 30px;
-  color: var(--color-white);
-  background: var(--color-mid-grey);
+    color: var(--color-white);
+    background: var(--color-mid-grey);
 }
 
 .content--revealed .textarea {
-  height: 100%;
+    grid-column: 2;
+    grid-row: 1 / span 3;
 }

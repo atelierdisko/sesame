@@ -3,7 +3,6 @@
   border: none;
   position: relative;
   margin: 0;
-  width: 100%;
   border-radius: 0;
   font-family: var(--font-family-default);
   font-size: 2.125rem;
@@ -12,7 +11,6 @@
   letter-spacing: 1px;
   cursor: pointer;
   box-sizing: border-box;
-  min-height: 140px;
   outline: none;
   overflow: hidden;
   transition: background-color 150ms linear;

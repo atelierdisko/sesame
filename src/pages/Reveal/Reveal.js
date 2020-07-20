@@ -10,8 +10,8 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-import React, { useEffect, useState, Fragment } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, {useEffect, useState, Fragment} from "react";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
@@ -22,10 +22,10 @@ import AES from "crypto-js/aes";
 import CryptoJS from "crypto-js";
 import "./Reveal.css";
 import Textarea from "../../components/Textarea/Textarea";
-import getFormData from "../../helpers/getFormData";
+import { useHistory } from "react-router-dom";
 
 const Reveal = () => {
-  let { hash } = useParams();
+  let {hash} = useParams();
 
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,8 @@ const Reveal = () => {
 
   const [exists, setExists] = useState(true);
   const [secret, setSecret] = useState(null);
+
+  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,7 +49,7 @@ const Reveal = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/secret/${hash}`);
+      const {data} = await axios.get(`/api/secret/${hash}`);
       decrypt(data.secret, passphrase);
     } catch (error) {
       console.log(error.response);
@@ -90,11 +92,11 @@ const Reveal = () => {
   if (!secret && loading) {
     return (
       <Fragment>
-        <Header />
+        <Header/>
 
         <div className="content content--fetching">{/* loader ? */}</div>
 
-        <Footer />
+        <Footer/>
       </Fragment>
     );
   }
@@ -102,7 +104,7 @@ const Reveal = () => {
   if (!exists) {
     return (
       <Fragment>
-        <Header />
+        <Header/>
 
         <div className="content content--removed">
           <h2 className="h-beta">
@@ -113,7 +115,7 @@ const Reveal = () => {
           </h2>
         </div>
 
-        <Footer />
+        <Footer/>
       </Fragment>
     );
   }
@@ -121,9 +123,9 @@ const Reveal = () => {
   if (secret && !passphraseError) {
     return (
       <Fragment>
-        <Header>
+        <Header resetHandler={() => history.push('/')}>
           <h2 className="h-beta">
-            Et voilà —<br />
+            Et voilà —<br/>
             Open Sesame.
           </h2>
         </Header>
@@ -132,14 +134,14 @@ const Reveal = () => {
           <Textarea>{secret}</Textarea>
         </div>
 
-        <Footer />
+        <Footer/>
       </Fragment>
     );
   }
 
   return (
     <Fragment>
-      <Header>
+      <Header resetHandler={() => history.push('/')}>
         <h2 className="h-beta">
           Du benötigst ein gültiges Passwort zum lesen dieser Nachricht. Die
           Nachricht wird Dir nur einmal angezeigt und im Anschluß gelöscht. Für
@@ -148,7 +150,7 @@ const Reveal = () => {
       </Header>
 
       <div className="content content--reveal">
-        <form onSubmit={(event) => handleSubmit(event)}>
+        <form onSubmit={event => handleSubmit(event)}>
           <div
             className={`passphrase ${
               passphraseError ? "passphrase--error" : ""
@@ -179,7 +181,7 @@ const Reveal = () => {
         </form>
       </div>
 
-      <Footer />
+      <Footer/>
     </Fragment>
   );
 };

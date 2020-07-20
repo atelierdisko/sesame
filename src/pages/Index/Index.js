@@ -9,7 +9,7 @@
  * in writing, software distributed on an "AS IS" BASIS, WITHOUT-
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
-import React, { Fragment, useState, useEffect } from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Textarea from "../../components/Textarea/Textarea";
@@ -24,7 +24,7 @@ import getFormData from "../../helpers/getFormData";
 import generatePassphrase from "../../helpers/generatePassphrase";
 import "./Index.css";
 
-const DeleteButton = ({ hash, ...rest }) => {
+const DeleteButton = ({hash, ...rest}) => {
   return (
     <Button isDangerous={true} indicator={false} {...rest}>
       Löschen
@@ -32,7 +32,7 @@ const DeleteButton = ({ hash, ...rest }) => {
   );
 };
 
-const CopyButton = ({ link }) => {
+const CopyButton = ({link}) => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
@@ -79,7 +79,7 @@ const Index = () => {
         formData.passphrase
       ).toString();
 
-      const { data } = await axios.post(`/api/secret`, {
+      const {data} = await axios.post(`/api/secret`, {
         secret: cipher,
         lifetime: formData.lifetime,
       });
@@ -93,10 +93,14 @@ const Index = () => {
     }
   };
 
-  const handleDeletion = async () => {
-    await axios.delete(`/api/secret/${secret.hash}`);
+  const reset = () => {
     setSecret(null);
     setPassphrase("");
+  };
+
+  const handleDeletion = async () => {
+    await axios.delete(`/api/secret/${secret.hash}`);
+    reset();
   };
 
   const getLink = () => {
@@ -105,22 +109,25 @@ const Index = () => {
     }
   };
 
-  return (
-    <Fragment>
-      <Header>
-        <span className="t-beta">
-          Damit Dinge die geheim sind, auch geheim bleiben
-        </span>
 
-        <h2 className="h-beta">
-          Verschlüssele Deine Nachrichten, Links oder Passwörter und versende
-          diese mit einem geheimen Link.
-        </h2>
-      </Header>
+  if (!secret) {
+    return (
+      <Fragment>
+        <Header resetHandler={reset}>
 
-      {!secret ? (
+          <span className="t-beta">
+            Damit Dinge die geheim sind, auch geheim bleiben
+          </span>
+
+          <h2 className="h-beta">
+            Verschlüssele Deine Nachrichten, Links oder Passwörter und versende
+            diese mit einem geheimen Link.
+          </h2>
+        </Header>
+
         <div className="content content--index">
           <form onSubmit={(event) => handleCreation(event)}>
+
             <Textarea
               name="secret"
               id="secret"
@@ -138,8 +145,8 @@ const Index = () => {
                   className="generate-passphrase"
                   onClick={() => setPassphrase(generatePassphrase())}
                 >
-                  generiere eins
-                </span>
+                    generiere eins
+                  </span>
               </Label>
 
               <Input
@@ -171,33 +178,53 @@ const Index = () => {
               type="submit"
               isPrimary={true}
               isLoading={loading}
-              isDisabled={characterCount < minCharacterCount}
-            >
+              isDisabled={characterCount < minCharacterCount}>
               Generate Secret Link
             </Button>
           </form>
         </div>
-      ) : (
-        <div className="content content--share">
-          <div className="link">
-            <span className="link__url">{getLink()}</span>
-            <span className="link__passphrase">
+
+        <Footer/>
+      </Fragment>
+    )
+  }
+
+  return (
+    <Fragment>
+      <Header resetHandler={reset} className="header--share">
+        <span className="t-beta">
+          Deine geheimen Daten sind wichtig
+        </span>
+
+        <h2 className="h-beta">
+          Teile Deine geheime Nachricht mit diesem Link. Die Nachricht wurde mit der von Dir gewählten Passphrase
+          verschlüsselt.
+        </h2>
+      </Header>
+
+      <div className="content content--share">
+        <div className='url'>
+          <span className="t-beta">Teile diesen Link:</span><br/>
+          <span className="h-beta">
+            <mark>{getLink()}</mark>
+          </span>
+        </div>
+
+        <span className="passphrase">
               <span className="passphrase-note t-beta">
                 Passphrase nicht vergessen:
               </span>
-              <br />
-              {passphrase}
-            </span>
-          </div>
+              <br/>
+          <span className="h-beta">{passphrase}</span>
+        </span>
 
-          <div className="actions">
-            <DeleteButton onClick={() => handleDeletion()} />
-            <CopyButton link={getLink()} />
-          </div>
+        <div className="actions">
+          <DeleteButton onClick={() => handleDeletion()}/>
+          <CopyButton link={getLink()}/>
         </div>
-      )}
+      </div>
 
-      <Footer />
+      <Footer/>
     </Fragment>
   );
 };

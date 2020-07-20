@@ -10,89 +10,56 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
+.content--index,
+.content--share,
 .content--index form {
-  display: flex;
-  flex-direction: column;
+    display: contents;
 }
 
 .content--index .textarea {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .content--index .options {
-  background: var(--color-mid-grey);
-  padding: 40px 30px;
-  box-sizing: border-box;
+    grid-column: 2;
+    grid-row: 2;
+    background: var(--color-mid-grey);
+    padding: 40px 30px;
+    box-sizing: border-box;
 }
 
 .content--index .options input {
-  margin-bottom: calc(2.5 * var(--spacing-unit));
+    margin-bottom: calc(2.5 * var(--spacing-unit));
 }
 
 .content--index .options .generate-passphrase {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.content--index .button {
-  height: 25%;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* share page */
-
-.content--share {
-  display: flex;
-  flex-direction: column;
-}
-
-.content--share .textarea {
-  height: 75%;
+.content--share .url {
+    grid-column: 2;
+    grid-row: 1;
+    word-break: break-all;
+    padding: calc(3 * var(--spacing-unit));
 }
 
 .content--share .passphrase {
-  background: var(--color-mid-grey);
-  padding: 40px 30px;
-  box-sizing: border-box;
-  height: 25%;
-  display: flex;
-  align-items: center;
+    grid-column: 2;
+    grid-row: 2;
+    color: var(--color-purple);
+    padding: calc(3 * var(--spacing-unit));
 }
 
-.content--share .passphrase > span {
-  width: 100%;
+.content--share .passphrase .passphrase-note {
+    color: var(--color-black);
 }
 
 .content--share .actions {
-  height: 25%;
-  margin-top: auto;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.content--share .actions .button {
-  height: 100%;
-}
-
-.content--share .link {
-  padding: 40px 30px;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  font-size: 2.125rem;
-  line-height: 1.25em;
-}
-
-.content--share .link .link__url {
-  word-break: break-all;
-}
-
-.content--share .link .link__passphrase {
-  color: var(--color-purple);
-  margin-top: auto;
-}
-
-.content--share .link .passphrase-note {
-  color: var(--color-black);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column: 2;
+    grid-row: 3;
 }
