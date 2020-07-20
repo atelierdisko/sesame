@@ -1,6 +1,12 @@
+::placeholder {
+  color: var(--color-purple);
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
 .textarea {
   display: grid;
-  padding: calc(3 * var(--spacing-unit));
+  padding: var(--outer-padding);
   box-sizing: border-box;
   grid-template-rows: auto 20px;
 }
@@ -25,10 +31,4 @@
 .textarea .character-count {
   text-align: right;
   color: var(--color-light-grey);
-}
-
-::placeholder {
-  color: var(--color-purple);
-  font-size: 1rem;
-  line-height: 1.5em;
 }

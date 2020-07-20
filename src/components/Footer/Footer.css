@@ -11,7 +11,7 @@
  */
 
 footer {
-  padding: calc(3 * var(--spacing-unit));
+  padding: var(--outer-padding);
   background: var(--color-dark-grey);
   justify-content: space-between;
   display: flex;

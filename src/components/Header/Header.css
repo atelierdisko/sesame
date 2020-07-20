@@ -1,48 +1,39 @@
-/*
- * Copyright 2020 Atelier Disko. All rights reserved.
- *
- * Use of this source code is governed by the AD General Software
- * License v1 that can be found under https://atelierdisko.de/licenses
- *
- * This software is proprietary and confidential. Redistribution
- * not permitted. Unless required by applicable law or agreed to
- * in writing, software distributed on an "AS IS" BASIS, WITHOUT-
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- */
-
 header {
-    color: var(--color-white);
-    padding: calc(3 * var(--spacing-unit));
+  color: var(--color-white);
 }
 
 header > * {
-    background-color: var(--color-purple);
-    background: var(--color-purple);
-    background-size: 200% 100%;
-    background-image: linear-gradient(to right, var(--color-purple) 50%, var(--color-yellow) 50%);
-    transition: background-position 300ms, color 1200ms;
+  background-color: var(--color-purple);
+  background: var(--color-purple);
+  background-size: 200% 100%;
+  background-image: linear-gradient(
+    to right,
+    var(--color-purple) 50%,
+    var(--color-yellow) 50%
+  );
+  transition: background-position 300ms, color 1200ms;
 }
 
 header.header--share > * {
-    color: var(--color-black);
-    background-position: -100% 0;
+  color: var(--color-black);
+  background-position: -100% 0;
 }
 
 header div {
-    display: flex;
-    flex-direction: column;
-    padding: calc(3 * var(--spacing-unit));
+  display: flex;
+  flex-direction: column;
+  padding: var(--outer-padding);
 }
 
 header .t-beta {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 header .h-alpha {
-    padding: calc(3 * var(--spacing-unit));
-    font-weight: bolder;
+  padding: var(--outer-padding);
+  font-weight: bolder;
 }
 
 header .h-alpha > * {
-    text-decoration: none;
+  text-decoration: none;
 }

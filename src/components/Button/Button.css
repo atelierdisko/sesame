@@ -14,6 +14,7 @@
   outline: none;
   overflow: hidden;
   transition: background-color 150ms linear;
+  min-height: 150px;
 }
 
 .button > span.icon {
@@ -47,16 +48,4 @@
 .button.button--dangerous {
   background-color: var(--color-red);
   color: var(--color-white);
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }

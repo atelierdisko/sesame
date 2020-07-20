@@ -13,53 +13,81 @@
 .content--index,
 .content--share,
 .content--index form {
-    display: contents;
+  display: contents;
 }
 
 .content--index .textarea {
-    grid-column: 2;
-    grid-row: 1;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .content--index .options {
-    grid-column: 2;
-    grid-row: 2;
-    background: var(--color-mid-grey);
-    padding: 40px 30px;
-    box-sizing: border-box;
+  grid-column: 2;
+  grid-row: 2;
+  background: var(--color-mid-grey);
+  padding: calc(5 * var(--spacing-unit)) calc(3 * var(--spacing-unit));
+  box-sizing: border-box;
+  max-height: 230px;
+  align-self: flex-end;
+  width: 100%;
 }
 
 .content--index .options input {
-    margin-bottom: calc(2.5 * var(--spacing-unit));
+  margin-bottom: calc(2.5 * var(--spacing-unit));
 }
 
 .content--index .options .generate-passphrase {
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* share page */
 .content--share .url {
-    grid-column: 2;
-    grid-row: 1;
-    word-break: break-all;
-    padding: calc(3 * var(--spacing-unit));
+  grid-column: 2;
+  grid-row: 1;
+  word-break: break-all;
+  padding: var(--outer-padding);
 }
 
 .content--share .passphrase {
-    grid-column: 2;
-    grid-row: 2;
-    color: var(--color-purple);
-    padding: calc(3 * var(--spacing-unit));
+  grid-column: 2;
+  grid-row: 2;
+  color: var(--color-purple);
+  padding: var(--outer-padding);
 }
 
 .content--share .passphrase .passphrase-note {
-    color: var(--color-black);
+  color: var(--color-black);
 }
 
 .content--share .actions {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-column: 2;
-    grid-row: 3;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+@media (max-width: 980px) {
+  .content--index,
+  .content--share,
+  .content--index form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content--index * {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .content--index .options {
+    padding: calc(3 * var(--spacing-unit)) calc(2 * var(--spacing-unit));
+  }
+
+  .content--share .actions {
+    display: flex;
+    flex-direction: column;
+  }
 }
