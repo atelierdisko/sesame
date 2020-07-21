@@ -182,14 +182,14 @@ const Index = () => {
 
   return (
     <Fragment>
-      <Header resetHandler={reset} className="header--share">
+      <Header resetHandler={reset} className="header header--share">
         <span className="t--delta">{messages.shareHeaderSubTitle}</span>
 
         <h2 className="t--beta">{messages.shareHeaderTitle}</h2>
       </Header>
 
-      <div className="content content--share">
-        <div className="url">
+      <main className="content content--share">
+        <div className="content__url">
           <span className="t--delta">{messages.shareLinkLabel}:</span>
           <br />
           <span className="t--beta">
@@ -197,19 +197,19 @@ const Index = () => {
           </span>
         </div>
 
-        <span className="passphrase">
-          <span className="passphrase-note t--delta">
+        <span className="content__passphrase content-passphrase">
+          <span className="content-passphrase__note t--delta">
             {messages.sharePassphraseLabel}:
           </span>
           <br />
           <span className="t--beta">{passphrase}</span>
         </span>
 
-        <div className="actions">
+        <div className="content__actions">
           <DeleteButton onClick={() => handleDeletion()} />
           <CopyButton link={getLink()} />
         </div>
-      </div>
+      </main>
 
       <Footer />
     </Fragment>
