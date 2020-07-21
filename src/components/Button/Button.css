@@ -17,14 +17,14 @@
   min-height: 150px;
 }
 
-.button > span.icon {
+.button > .icon {
   position: absolute;
   right: calc(5 * var(--spacing-unit));
   transition: right 140ms linear, opacity 80ms ease-in-out;
   opacity: 1;
 }
 
-.button.button--disabled > span.icon {
+.button--disabled > .icon {
   right: -20px; /* aka hidden */
   opacity: 0;
 }
@@ -33,19 +33,19 @@
   box-shadow: inset 0 0 0 2px var(--color-black);
 }
 
-.button.button--primary {
+.button--primary {
   background-color: var(--color-cyan);
   color: var(--color-white);
 }
 
-.button.button--disabled {
+.button--disabled {
   background-color: var(--color-light-grey);
   color: var(--color-mid-grey);
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.button.button--dangerous {
+.button--dangerous {
   background-color: var(--color-red);
   color: var(--color-white);
 }

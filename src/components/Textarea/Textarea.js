@@ -29,7 +29,7 @@ const Textarea = ({
         {children}
       </textarea>
 
-      <span className="character-count t--gamma">
+      <span className="textarea__character-count t--gamma">
         {characterCount}/{maxCharacterCount}
       </span>
     </div>
