@@ -5,6 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import "./variables.css";
+import "./typography.css";
 
 import Index from "./pages/Index/Index";
 import Reveal from "./pages/Reveal/Reveal";
