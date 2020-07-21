@@ -1,5 +1,5 @@
 :root {
-  --color-blue: rgb(13, 38, 252);
+  --color-blue: #0d26fc;
   --color-dark-grey: #454545;
   --color-mid-grey: #d2d2d8;
   --color-light-grey: #e8e8f0;
@@ -10,6 +10,7 @@
   --color-light-yellow: #fff74c;
   --color-yellow: #fff74c;
   --color-red: #e83151;
+
   --spacing-unit: 8px;
 
   --font-family-default: "IBM Plex Sans", sans-serif;

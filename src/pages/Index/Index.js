@@ -108,13 +108,13 @@ const Index = () => {
   if (!secret) {
     return (
       <Fragment>
-        <Header resetHandler={reset}>
-          <span className="t--delta">{messages.createHeaderSubTitle}</span>
+        <Header resetHandler={reset} className="header">
+          <span className="t--delta header-info__subtitle">{messages.createHeaderSubTitle}</span>
 
-          <h2 className="t--beta">{messages.createHeaderTitle}</h2>
+          <h2 className="t--beta header-info__title">{messages.createHeaderTitle}</h2>
         </Header>
 
-        <div className="content content--index">
+        <main className="content content--index">
           <form onSubmit={(event) => handleCreation(event)}>
             <Textarea
               name="secret"
@@ -171,7 +171,7 @@ const Index = () => {
               {messages.getLinkButton}
             </Button>
           </form>
-        </div>
+        </main>
 
         <Footer />
       </Fragment>

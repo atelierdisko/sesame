@@ -11,7 +11,7 @@ const Header = ({ children, resetHandler, className }) => {
 
   return (
     <header className={className}>
-      <span className="t--alpha">
+      <span className="header__title t--alpha">
         <a
           href="/"
           onClick={(event) => {
@@ -23,7 +23,7 @@ const Header = ({ children, resetHandler, className }) => {
         </a>
       </span>
 
-      <div>{children}</div>
+      <div className="header__info header-info">{children}</div>
     </header>
   );
 };

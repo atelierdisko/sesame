@@ -3,7 +3,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <a className="t--epsilon" href="http://github.com/atelierdisko/sesame">
         GitHub
       </a>

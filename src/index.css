@@ -26,25 +26,6 @@ a {
   color: inherit;
 }
 
-footer {
-  grid-row: 3;
-  grid-column: 1;
-}
-
-header {
-  display: contents;
-}
-
-header:first-child {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-header:last-child {
-  grid-column: 1;
-  grid-row: 2;
-}
-
 /* Utility classes */
 .util-container {
   height: 100vh;
@@ -58,11 +39,5 @@ header:last-child {
   .util-container {
     grid-template-columns: 100%;
     grid-template-rows: auto;
-  }
-
-  header,
-  footer {
-    grid-column: auto;
-    grid-row: auto;
   }
 }
