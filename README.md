@@ -1,4 +1,4 @@
-# Sesame
+![Sesame](https://cdn.disko.io/atelierdisko/sesame/banner.gif)
 
 On the fast track? Run it with:
 ```
