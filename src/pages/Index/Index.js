@@ -109,9 +109,9 @@ const Index = () => {
     return (
       <Fragment>
         <Header resetHandler={reset}>
-          <span className="t-beta">{messages.createHeaderSubTitle}</span>
+          <span className="t--delta">{messages.createHeaderSubTitle}</span>
 
-          <h2 className="h-beta">{messages.createHeaderTitle}</h2>
+          <h2 className="t--beta">{messages.createHeaderTitle}</h2>
         </Header>
 
         <div className="content content--index">
@@ -181,26 +181,26 @@ const Index = () => {
   return (
     <Fragment>
       <Header resetHandler={reset} className="header--share">
-        <span className="t-beta">{messages.shareHeaderSubTitle}</span>
+        <span className="t--delta">{messages.shareHeaderSubTitle}</span>
 
-        <h2 className="h-beta">{messages.shareHeaderTitle}</h2>
+        <h2 className="t--beta">{messages.shareHeaderTitle}</h2>
       </Header>
 
       <div className="content content--share">
         <div className="url">
-          <span className="t-beta">{messages.shareLinkLabel}:</span>
+          <span className="t--delta">{messages.shareLinkLabel}:</span>
           <br />
-          <span className="h-beta">
+          <span className="t--beta">
             <mark>{getLink()}</mark>
           </span>
         </div>
 
         <span className="passphrase">
-          <span className="passphrase-note t-beta">
+          <span className="passphrase-note t--delta">
             {messages.sharePassphraseLabel}:
           </span>
           <br />
-          <span className="h-beta">{passphrase}</span>
+          <span className="t--beta">{passphrase}</span>
         </span>
 
         <div className="actions">

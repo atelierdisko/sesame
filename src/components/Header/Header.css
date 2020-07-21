@@ -26,15 +26,15 @@ header div {
   padding: var(--outer-padding);
 }
 
-header .t-beta {
+header .t--delta {
   margin-top: auto;
 }
 
-header .h-alpha {
+header .t--alpha {
   padding: var(--outer-padding);
   font-weight: bolder;
 }
 
-header .h-alpha > * {
+header .t--alpha > * {
   text-decoration: none;
 }

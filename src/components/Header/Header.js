@@ -11,7 +11,7 @@ const Header = ({ children, resetHandler, className }) => {
 
   return (
     <header className={className}>
-      <span className="h-alpha">
+      <span className="t--alpha">
         <a
           href="/"
           onClick={(event) => {

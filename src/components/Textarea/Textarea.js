@@ -19,14 +19,14 @@ const Textarea = ({
     <div className={classes.join(" ")}>
       <textarea
         {...rest}
-        className="t-alpha"
+        className="t--gamma"
         onBlur={() => setFocused(false)}
         onFocus={() => setFocused(true)}
       >
         {children}
       </textarea>
 
-      <span className="character-count t-alpha">
+      <span className="character-count t--gamma">
         {characterCount}/{maxCharacterCount}
       </span>
     </div>

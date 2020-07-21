@@ -96,7 +96,7 @@ const Reveal = () => {
         <Header />
 
         <div className="content content--removed">
-          <h2 className="h-beta">{messages.notFoundHeaderTitle}</h2>
+          <h2 className="t--beta">{messages.notFoundHeaderTitle}</h2>
         </div>
 
         <Footer />
@@ -108,7 +108,7 @@ const Reveal = () => {
     return (
       <Fragment>
         <Header className="header--revealed">
-          <h2 className="h-beta">{messages.revealedHeaderTitle}</h2>
+          <h2 className="t--beta">{messages.revealedHeaderTitle}</h2>
         </Header>
 
         <div className="content content--revealed">
@@ -123,7 +123,7 @@ const Reveal = () => {
   return (
     <Fragment>
       <Header>
-        <h2 className="h-beta">{messages.revealHeaderTitle}</h2>
+        <h2 className="t--beta">{messages.revealHeaderTitle}</h2>
       </Header>
 
       <div className="content content--reveal">
