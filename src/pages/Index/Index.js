@@ -115,10 +115,11 @@ const Index = () => {
         </Header>
 
         <main className="content content--index">
-          <form onSubmit={(event) => handleCreation(event)}>
+          <form className="secret-form secret-form--index" onSubmit={(event) => handleCreation(event)}>
             <Textarea
               name="secret"
               id="secret"
+              className="textarea--index"
               placeholder={messages.secretPlaceholder}
               characterCount={characterCount}
               maxCharacterCount={maxCharacterCount}
@@ -126,11 +127,11 @@ const Index = () => {
               required
             />
 
-            <div className="options">
-              <Label htmlFor="passphrase">
+            <div className="secret-form__options secret-form-options secret-form-options--index">
+              <Label htmlFor="passphrase" className="secret-form-options__label secret-form-options-label">
                 {messages.generatePassphraseLabel}{" "}
                 <span
-                  className="generate-passphrase"
+                  className="secret-form-options-label__generator secret-form-options-label__generator--index"
                   onClick={() => setPassphrase(generatePassphrase())}
                 >
                   {messages.generatePassphraseButton}
@@ -138,6 +139,7 @@ const Index = () => {
               </Label>
 
               <Input
+                className="secret-form-options__input secret-form-options__input--index"
                 type="text"
                 value={passphrase}
                 onChange={(event) =>

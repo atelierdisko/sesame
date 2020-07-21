@@ -1,15 +1,15 @@
 .content--index,
 .content--share,
-.content--index form {
+.secret-form--index {
   display: contents;
 }
 
-.content--index .textarea {
+.textarea--index {
   grid-column: 2;
   grid-row: 1;
 }
 
-.content--index .options {
+.secret-form-options--index {
   grid-column: 2;
   grid-row: 2;
   background: var(--color-mid-grey);
@@ -20,11 +20,11 @@
   width: 100%;
 }
 
-.content--index .options input {
+.secret-form-options__input--index {
   margin-bottom: calc(2.5 * var(--spacing-unit));
 }
 
-.content--index .options .generate-passphrase {
+.secret-form-options-label__generator--index {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -70,7 +70,7 @@
 }
 
 @media (max-width: 375px) {
-  .content--index .options {
+  .content--index .secret-form__options {
     padding: calc(3 * var(--spacing-unit)) calc(2 * var(--spacing-unit));
   }
 

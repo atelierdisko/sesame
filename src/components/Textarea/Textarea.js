@@ -1,25 +1,28 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./Textarea.css";
+import classNames from "classnames";
 
 const Textarea = ({
-  isPrimary,
-  children,
-  characterCount,
-  maxCharacterCount,
-  ...rest
-}) => {
+                    isPrimary,
+                    children,
+                    characterCount,
+                    maxCharacterCount,
+                    className,
+                    ...rest
+                  }) => {
   const [focused, setFocused] = useState(false);
-  const classes = ["textarea"];
 
-  if (focused) {
-    classes.push("textarea--focused");
-  }
+  const textareaClasses = classNames(
+    "textarea",
+    className,
+    {"textarea--focused": focused}
+  );
 
   return (
-    <div className={classes.join(" ")}>
+    <div className={textareaClasses}>
       <textarea
         {...rest}
-        className="t--gamma"
+        className="textarea__inner t--gamma"
         onBlur={() => setFocused(false)}
         onFocus={() => setFocused(true)}
       >
