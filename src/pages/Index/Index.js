@@ -11,12 +11,13 @@ import AES from "crypto-js/aes";
 import * as clipboard from "clipboard-polyfill";
 import getFormData from "../../helpers/getFormData";
 import generatePassphrase from "../../helpers/generatePassphrase";
+import { messages } from "../../messages";
 import "./Index.css";
 
 const DeleteButton = ({ hash, ...rest }) => {
   return (
     <Button isDangerous={true} indicator={false} {...rest}>
-      Löschen
+      Delete
     </Button>
   );
 };
@@ -38,7 +39,7 @@ const CopyButton = ({ link }) => {
 
   return (
     <Button isPrimary={true} onClick={() => copyToClipboard()}>
-      {copied ? "Kopiert!" : "Link kopieren"}
+      {copied ? "Copied!" : "Copy"}
     </Button>
   );
 };
@@ -51,6 +52,12 @@ const Index = () => {
 
   const maxCharacterCount = 10000;
   const minCharacterCount = 1;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  }, [secret]);
 
   const handleCreation = async (event) => {
     event.preventDefault();
@@ -102,14 +109,9 @@ const Index = () => {
     return (
       <Fragment>
         <Header resetHandler={reset}>
-          <span className="t-beta">
-            Damit Dinge die geheim sind, auch geheim bleiben
-          </span>
+          <span className="t-beta">{messages.createHeaderSubTitle}</span>
 
-          <h2 className="h-beta">
-            Verschlüssele Deine Nachrichten, Links oder Passwörter und versende
-            diese mit einem geheimen Link.
-          </h2>
+          <h2 className="h-beta">{messages.createHeaderTitle}</h2>
         </Header>
 
         <div className="content content--index">
@@ -117,7 +119,7 @@ const Index = () => {
             <Textarea
               name="secret"
               id="secret"
-              placeholder="Your Super Secret Content goes here..."
+              placeholder={messages.secretPlaceholder}
               characterCount={characterCount}
               maxCharacterCount={maxCharacterCount}
               onChange={(event) => setCharacterCount(event.target.value.length)}
@@ -126,12 +128,12 @@ const Index = () => {
 
             <div className="options">
               <Label htmlFor="passphrase">
-                Wähle ein sicheres Passwort zum Entschlüsseln oder{" "}
+                {messages.generatePassphraseLabel}{" "}
                 <span
                   className="generate-passphrase"
                   onClick={() => setPassphrase(generatePassphrase())}
                 >
-                  generiere eins
+                  {messages.generatePassphraseButton}
                 </span>
               </Label>
 
@@ -166,7 +168,7 @@ const Index = () => {
               isLoading={loading}
               isDisabled={characterCount < minCharacterCount}
             >
-              Generate Link
+              {messages.getLinkButton}
             </Button>
           </form>
         </div>
@@ -179,17 +181,14 @@ const Index = () => {
   return (
     <Fragment>
       <Header resetHandler={reset} className="header--share">
-        <span className="t-beta">Deine geheimen Daten sind wichtig</span>
+        <span className="t-beta">{messages.shareHeaderSubTitle}</span>
 
-        <h2 className="h-beta">
-          Teile Deine geheime Nachricht mit diesem Link. Die Nachricht wurde mit
-          der von Dir gewählten Passphrase verschlüsselt.
-        </h2>
+        <h2 className="h-beta">{messages.shareHeaderTitle}</h2>
       </Header>
 
       <div className="content content--share">
         <div className="url">
-          <span className="t-beta">Teile diesen Link:</span>
+          <span className="t-beta">{messages.shareLinkLabel}:</span>
           <br />
           <span className="h-beta">
             <mark>{getLink()}</mark>
@@ -198,7 +197,7 @@ const Index = () => {
 
         <span className="passphrase">
           <span className="passphrase-note t-beta">
-            Passphrase nicht vergessen:
+            {messages.sharePassphraseLabel}:
           </span>
           <br />
           <span className="h-beta">{passphrase}</span>

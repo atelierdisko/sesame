@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
@@ -11,6 +11,7 @@ import CryptoJS from "crypto-js";
 import "./Reveal.css";
 import Textarea from "../../components/Textarea/Textarea";
 import { useHistory } from "react-router-dom";
+import { messages } from "../../messages";
 
 const Reveal = () => {
   let { hash } = useParams();
@@ -95,12 +96,7 @@ const Reveal = () => {
         <Header />
 
         <div className="content content--removed">
-          <h2 className="h-beta">
-            Tatsache! Hier gibt es nichts zu sehen, denn die Nachricht würde
-            gelöscht. Für immer. Ehrenwort. Gehe direkt auf{" "}
-            <Link to="/">Start</Link>, nicht über Los und zieh nicht nach
-            Pinneberg.
-          </h2>
+          <h2 className="h-beta">{messages.notFoundHeaderTitle}</h2>
         </div>
 
         <Footer />
@@ -111,11 +107,8 @@ const Reveal = () => {
   if (secret && !passphraseError) {
     return (
       <Fragment>
-        <Header resetHandler={() => history.push("/")}>
-          <h2 className="h-beta">
-            Et voilà —<br />
-            Open Sesame.
-          </h2>
+        <Header className="header--revealed">
+          <h2 className="h-beta">{messages.revealedHeaderTitle}</h2>
         </Header>
 
         <div className="content content--revealed">
@@ -129,12 +122,8 @@ const Reveal = () => {
 
   return (
     <Fragment>
-      <Header resetHandler={() => history.push("/")}>
-        <h2 className="h-beta">
-          Du benötigst ein gültiges Passwort zum lesen dieser Nachricht. Die
-          Nachricht wird Dir nur einmal angezeigt und im Anschluß gelöscht. Für
-          immer.
-        </h2>
+      <Header>
+        <h2 className="h-beta">{messages.revealHeaderTitle}</h2>
       </Header>
 
       <div className="content content--reveal">
@@ -164,7 +153,7 @@ const Reveal = () => {
             isPrimary={true}
             isDisabled={loading || !passphrase}
           >
-            Nachricht entschlüsseln
+            {messages.decryptButton}
           </Button>
         </form>
       </div>
