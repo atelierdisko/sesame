@@ -109,13 +109,20 @@ const Index = () => {
     return (
       <Fragment>
         <Header resetHandler={reset} className="header">
-          <span className="t--delta header-info__subtitle">{messages.createHeaderSubTitle}</span>
+          <span className="t--delta header-info__subtitle">
+            {messages.createHeaderSubTitle}
+          </span>
 
-          <h2 className="t--beta header-info__title">{messages.createHeaderTitle}</h2>
+          <h2 className="t--beta header-info__title">
+            {messages.createHeaderTitle}
+          </h2>
         </Header>
 
         <main className="content content--index">
-          <form className="secret-form secret-form--index" onSubmit={(event) => handleCreation(event)}>
+          <form
+            className="secret-form secret-form--index"
+            onSubmit={(event) => handleCreation(event)}
+          >
             <Textarea
               name="secret"
               id="secret"
@@ -128,7 +135,10 @@ const Index = () => {
             />
 
             <div className="secret-form__options secret-form-options secret-form-options--index">
-              <Label htmlFor="passphrase" className="secret-form-options__label secret-form-options-label">
+              <Label
+                htmlFor="passphrase"
+                className="secret-form-options__label secret-form-options-label"
+              >
                 {messages.generatePassphraseLabel}{" "}
                 <span
                   className="secret-form-options-label__generator secret-form-options-label__generator--index"

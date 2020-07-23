@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import classNames from "classnames";
 import "./Header.css";
 
 const Header = ({ children, resetHandler, className }) => {
@@ -10,7 +11,7 @@ const Header = ({ children, resetHandler, className }) => {
   }
 
   return (
-    <header className={className}>
+    <header className={classNames("header", className)}>
       <span className="header__title t--alpha">
         <a
           href="/"

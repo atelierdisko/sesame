@@ -10,6 +10,7 @@
     "classnames": "^2.2.6",
     "clipboard-polyfill": "^3.0.0-pre5",
     "crypto-js": "^4.0.0",
+    "focus-visible": "^5.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",

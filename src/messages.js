@@ -8,6 +8,7 @@ export const messages = {
 
   shareLinkLabel: "Share this link",
   sharePassphraseLabel: "Keep your passphrase save",
+  invalidPassphraseMessage: "Passphrase invalid",
 
   createHeaderTitle:
     "Encrypt your messages or credentials and share them with a passphrase protected secret link.",
@@ -22,5 +23,6 @@ export const messages = {
   revealedHeaderTitle: "Et voilà — Open Sesame.",
 
   notFoundHeaderTitle:
-    "Tatsache! Hier gibt es nichts zu sehen, denn die Nachricht würde gelöscht. Für immer. Ehrenwort. Gehe direkt auf Start, nicht über Los und zieh nicht nach Pinneberg",
+    "Indeed! There is nothing to see here, because the message was deleted. Forever.",
+  homeLinkLabel: "Create a new message",
 };

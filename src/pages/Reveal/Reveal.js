@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
@@ -10,7 +10,6 @@ import AES from "crypto-js/aes";
 import CryptoJS from "crypto-js";
 import "./Reveal.css";
 import Textarea from "../../components/Textarea/Textarea";
-import { useHistory } from "react-router-dom";
 import { messages } from "../../messages";
 
 const Reveal = () => {
@@ -23,8 +22,6 @@ const Reveal = () => {
 
   const [exists, setExists] = useState(true);
   const [secret, setSecret] = useState(null);
-
-  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -96,9 +93,14 @@ const Reveal = () => {
         <Header />
 
         <div className="content content--removed">
-          <h2 className="t--beta">{messages.notFoundHeaderTitle}</h2>
-        </div>
+          <h2 className="t--beta">
+            {messages.notFoundHeaderTitle}
 
+            <br />
+            <br />
+            <Link to="/">{messages.homeLinkLabel}</Link>
+          </h2>
+        </div>
         <Footer />
       </Fragment>
     );
@@ -135,7 +137,9 @@ const Reveal = () => {
           >
             <span>
               <Label htmlFor="passphrase">
-                {passphraseError ? "Passphrase ungültig" : "Passphrase"}
+                {passphraseError
+                  ? messages.invalidPassphraseMessage
+                  : "Passphrase"}
               </Label>
 
               <Input

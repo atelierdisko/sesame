@@ -29,7 +29,8 @@
   opacity: 0;
 }
 
-.button:focus {
+.button.focus-visible {
+  outline: none;
   box-shadow: inset 0 0 0 2px var(--color-black);
 }
 

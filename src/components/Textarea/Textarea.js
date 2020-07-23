@@ -1,22 +1,20 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Textarea.css";
 import classNames from "classnames";
 
 const Textarea = ({
-                    isPrimary,
-                    children,
-                    characterCount,
-                    maxCharacterCount,
-                    className,
-                    ...rest
-                  }) => {
+  isPrimary,
+  children,
+  characterCount,
+  maxCharacterCount,
+  className,
+  ...rest
+}) => {
   const [focused, setFocused] = useState(false);
 
-  const textareaClasses = classNames(
-    "textarea",
-    className,
-    {"textarea--focused": focused}
-  );
+  const textareaClasses = classNames("textarea", className, {
+    "textarea--focused": focused,
+  });
 
   return (
     <div className={textareaClasses}>
