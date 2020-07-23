@@ -5,14 +5,13 @@
 ## Description
 Welcome to the Sesame client!
 
-We share private information in our team and with clients everyday — logins, passwords, ssh-keys. We are all aware that this data is important — and most of the time not meant for everyone’s eyes. Nevertheless people are getting lazy during work. In a rush we share confidential logins via email our super secret passwords are getting stuck in Slack chats forever and after a while we forget about it.
+We share private information in our team and with clients everyday — logins, passwords or ssh-keys. We are all aware that this data is important and most of the time not meant for everyone’s eyes. Nevertheless people are getting lazy during work: In a rush we share confidential logins via email our super secret passwords are getting stuck in Slack chats forever and after a while we forget about it. 
 
-That’s why we developed Sesame: A tool to securely share your sensitive data. 
+That’s why we developed Sesame: A tool to securely share your sensitive data with your clients, team members or friends. Since we take privacy seriously — Sesame is online as a demo. 
   
-Since we take it seriously, Sesame will not be available online. It is meant to be self hosted. We aimed for a
- minimalistic api and an easy setup so you can dare to own your secrets.
-  
-Your data is important. Take care of it. Go get Sesame!
+Your data is important. Take care of it. Test Sesame at [sesame.disko.io](https://sesame.disko.io/) or get it at
+ [github.com/atelierdisko/sesame](https://github.com/atelierdisko/sesame)
+ for free. We aimed for a minimalistic api and an easy setup so you can dare to own your secrets.
 
 ## Prerequisites
 - [npm](https://www.npmjs.com/)
