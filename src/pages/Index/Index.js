@@ -108,17 +108,18 @@ const Index = () => {
   if (!secret) {
     return (
       <Fragment>
-        <Header resetHandler={reset}>
-          <span className="t-beta">{messages.createHeaderSubTitle}</span>
+        <Header resetHandler={reset} className="header">
+          <span className="t--delta header-info__subtitle">{messages.createHeaderSubTitle}</span>
 
-          <h2 className="h-beta">{messages.createHeaderTitle}</h2>
+          <h2 className="t--beta header-info__title">{messages.createHeaderTitle}</h2>
         </Header>
 
-        <div className="content content--index">
-          <form onSubmit={(event) => handleCreation(event)}>
+        <main className="content content--index">
+          <form className="secret-form secret-form--index" onSubmit={(event) => handleCreation(event)}>
             <Textarea
               name="secret"
               id="secret"
+              className="textarea--index"
               placeholder={messages.secretPlaceholder}
               characterCount={characterCount}
               maxCharacterCount={maxCharacterCount}
@@ -126,11 +127,11 @@ const Index = () => {
               required
             />
 
-            <div className="options">
-              <Label htmlFor="passphrase">
+            <div className="secret-form__options secret-form-options secret-form-options--index">
+              <Label htmlFor="passphrase" className="secret-form-options__label secret-form-options-label">
                 {messages.generatePassphraseLabel}{" "}
                 <span
-                  className="generate-passphrase"
+                  className="secret-form-options-label__generator secret-form-options-label__generator--index"
                   onClick={() => setPassphrase(generatePassphrase())}
                 >
                   {messages.generatePassphraseButton}
@@ -138,6 +139,7 @@ const Index = () => {
               </Label>
 
               <Input
+                className="secret-form-options__input secret-form-options__input--index"
                 type="text"
                 value={passphrase}
                 onChange={(event) =>
@@ -171,7 +173,7 @@ const Index = () => {
               {messages.getLinkButton}
             </Button>
           </form>
-        </div>
+        </main>
 
         <Footer />
       </Fragment>
@@ -180,34 +182,34 @@ const Index = () => {
 
   return (
     <Fragment>
-      <Header resetHandler={reset} className="header--share">
-        <span className="t-beta">{messages.shareHeaderSubTitle}</span>
+      <Header resetHandler={reset} className="header header--share">
+        <span className="t--delta">{messages.shareHeaderSubTitle}</span>
 
-        <h2 className="h-beta">{messages.shareHeaderTitle}</h2>
+        <h2 className="t--beta">{messages.shareHeaderTitle}</h2>
       </Header>
 
-      <div className="content content--share">
-        <div className="url">
-          <span className="t-beta">{messages.shareLinkLabel}:</span>
+      <main className="content content--share">
+        <div className="content__url">
+          <span className="t--delta">{messages.shareLinkLabel}:</span>
           <br />
-          <span className="h-beta">
+          <span className="t--beta">
             <mark>{getLink()}</mark>
           </span>
         </div>
 
-        <span className="passphrase">
-          <span className="passphrase-note t-beta">
+        <span className="content__passphrase content-passphrase">
+          <span className="content-passphrase__note t--delta">
             {messages.sharePassphraseLabel}:
           </span>
           <br />
-          <span className="h-beta">{passphrase}</span>
+          <span className="t--beta">{passphrase}</span>
         </span>
 
-        <div className="actions">
+        <div className="content__actions">
           <DeleteButton onClick={() => handleDeletion()} />
           <CopyButton link={getLink()} />
         </div>
-      </div>
+      </main>
 
       <Footer />
     </Fragment>

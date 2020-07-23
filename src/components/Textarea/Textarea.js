@@ -1,32 +1,35 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./Textarea.css";
+import classNames from "classnames";
 
 const Textarea = ({
-  isPrimary,
-  children,
-  characterCount,
-  maxCharacterCount,
-  ...rest
-}) => {
+                    isPrimary,
+                    children,
+                    characterCount,
+                    maxCharacterCount,
+                    className,
+                    ...rest
+                  }) => {
   const [focused, setFocused] = useState(false);
-  const classes = ["textarea"];
 
-  if (focused) {
-    classes.push("textarea--focused");
-  }
+  const textareaClasses = classNames(
+    "textarea",
+    className,
+    {"textarea--focused": focused}
+  );
 
   return (
-    <div className={classes.join(" ")}>
+    <div className={textareaClasses}>
       <textarea
         {...rest}
-        className="t-alpha"
+        className="textarea__inner t--gamma"
         onBlur={() => setFocused(false)}
         onFocus={() => setFocused(true)}
       >
         {children}
       </textarea>
 
-      <span className="character-count t-alpha">
+      <span className="textarea__character-count t--gamma">
         {characterCount}/{maxCharacterCount}
       </span>
     </div>

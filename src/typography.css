@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+
+h1, h2 {
+  margin: 0;
+}
+
+.t--alpha {
+  font-family: var(--font-family-default);
+  font-size: 3.625rem; /* 58px */
+  font-weight: 400;
+  line-height: 1em;
+  letter-spacing: 1px;
+}
+
+.t--beta {
+  font-family: var(--font-family-default);
+  font-size: 2.125rem; /* 34px */
+  line-height: 1.25em;
+  font-weight: 400;
+  margin-top: calc(var(--spacing-unit) * 0.5);
+}
+
+.t--gamma {
+  font-family: var(--font-family-tech);
+  font-size: 1rem; /* 16px */
+  line-height: 1.313em;
+  font-weight: 400;
+}
+
+.t--delta {
+  font-family: var(--font-family-tech);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.286em;
+  font-weight: 400;
+}
+
+.t--epsilon {
+  font-family: var(--font-family-tech);
+  font-size: 0.75em; /* 12px */
+  line-height: 1.333em;
+  font-weight: 400;
+}

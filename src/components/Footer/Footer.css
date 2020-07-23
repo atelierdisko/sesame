@@ -1,4 +1,4 @@
-footer {
+.footer {
   padding: var(--outer-padding);
   background: var(--color-dark-grey);
   justify-content: space-between;
@@ -6,4 +6,14 @@ footer {
   align-items: flex-end;
   color: rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
+
+  grid-row: 3;
+  grid-column: 1;
+}
+
+@media (max-width: 980px) {
+  .footer {
+    grid-column: auto;
+    grid-row: auto;
+  }
 }

@@ -1,15 +1,15 @@
 .content--index,
 .content--share,
-.content--index form {
+.secret-form--index {
   display: contents;
 }
 
-.content--index .textarea {
+.textarea--index {
   grid-column: 2;
   grid-row: 1;
 }
 
-.content--index .options {
+.secret-form-options--index {
   grid-column: 2;
   grid-row: 2;
   background: var(--color-mid-grey);
@@ -20,35 +20,35 @@
   width: 100%;
 }
 
-.content--index .options input {
+.secret-form-options__input--index {
   margin-bottom: calc(2.5 * var(--spacing-unit));
 }
 
-.content--index .options .generate-passphrase {
+.secret-form-options-label__generator--index {
   text-decoration: underline;
   cursor: pointer;
 }
 
 /* share page */
-.content--share .url {
+.content__url {
   grid-column: 2;
   grid-row: 1;
   word-break: break-all;
   padding: var(--outer-padding);
 }
 
-.content--share .passphrase {
+.content__passphrase {
   grid-column: 2;
   grid-row: 2;
   color: var(--color-purple);
   padding: var(--outer-padding);
 }
 
-.content--share .passphrase .passphrase-note {
+.content-passphrase__note {
   color: var(--color-black);
 }
 
-.content--share .actions {
+.content__actions {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-column: 2;
@@ -58,7 +58,7 @@
 @media (max-width: 980px) {
   .content--index,
   .content--share,
-  .content--index form {
+  .secret-form--index {
     display: flex;
     flex-direction: column;
   }
@@ -70,11 +70,11 @@
 }
 
 @media (max-width: 375px) {
-  .content--index .options {
+  .secret-form-options--index {
     padding: calc(3 * var(--spacing-unit)) calc(2 * var(--spacing-unit));
   }
 
-  .content--share .actions {
+  .content__actions {
     display: flex;
     flex-direction: column;
   }

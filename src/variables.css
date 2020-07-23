@@ -1,0 +1,26 @@
+:root {
+  --color-blue: #0d26fc;
+  --color-dark-grey: #454545;
+  --color-mid-grey: #d2d2d8;
+  --color-light-grey: #e8e8f0;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-purple: #916bff;
+  --color-cyan: #00f5d4;
+  --color-light-yellow: #fff74c;
+  --color-yellow: #fff74c;
+  --color-red: #e83151;
+
+  --spacing-unit: 8px;
+
+  --font-family-default: "IBM Plex Sans", sans-serif;
+  --font-family-tech: "IBM Plex Mono", monospace;
+
+  --outer-padding: calc(3 * var(--spacing-unit)); /* 24px */
+}
+
+@media (max-width: 375px) {
+  :root {
+    --outer-padding: calc(2 * var(--spacing-unit)); /* 24px */
+  }
+}
