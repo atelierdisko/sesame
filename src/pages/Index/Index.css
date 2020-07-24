@@ -48,6 +48,10 @@
   color: var(--color-black);
 }
 
+.content-passphrase__passphrase {
+  word-break: break-all;
+}
+
 .content__actions {
   display: grid;
   grid-template-columns: 1fr 2fr;

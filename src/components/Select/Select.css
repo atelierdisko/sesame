@@ -13,6 +13,7 @@
   padding: calc(1.5 * var(--spacing-unit));
   box-sizing: border-box;
   outline: none;
+  border-radius: 0;
 }
 
 .select__content:focus {

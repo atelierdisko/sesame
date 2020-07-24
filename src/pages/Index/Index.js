@@ -212,7 +212,7 @@ const Index = () => {
             {messages.sharePassphraseLabel}:
           </span>
           <br />
-          <span className="t--beta">{passphrase}</span>
+          <span className="content-passphrase__passphrase t--beta">{passphrase}</span>
         </span>
 
         <div className="content__actions">
