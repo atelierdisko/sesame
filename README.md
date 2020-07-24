@@ -3,14 +3,9 @@
 # Sesame – Securely Share Sensitive Data
 
 ## Description
-Welcome to the Sesame client!
+We share private information in our team and with clients everyday — logins, passwords or ssh-keys. We are all aware that this data is important and most of the time not meant for everyone’s eyes. Humans are wired to take the path of least resistance: In a rush we share confidential logins via email our super secret passwords are getting stuck in Slack chats forever. After a while we forget about it. 
 
-We share private information in our team and with clients everyday — logins, passwords or ssh-keys. We are all aware that this data is important and most of the time not meant for everyone’s eyes. Nevertheless people are getting lazy during work: In a rush we share confidential logins via email our super secret passwords are getting stuck in Slack chats forever and after a while we forget about it. 
-
-That’s why we developed Sesame: A tool to securely share your sensitive data with your clients, team members or friends. Since we take privacy seriously — Sesame is online as a demo. 
-  
-Your data is important. Take care of it. Test Sesame at [sesame.disko.io](https://sesame.disko.io/). We aimed for a
- minimalistic api and an easy setup so you can dare to own your secrets.
+That’s why we developed Sesame: A tool to securely share your sensitive data with your clients, team members or friends. We aimed for a minimalistic api and an easy setup so you can dare to own your secrets. Your data is important. Take care of it.
 
 ## Quickstart
 On the fast track? Start [Docker](https://www.docker.com/get-started) and run Sesame with:
