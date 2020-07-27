@@ -114,7 +114,7 @@ const Reveal = () => {
         </Header>
 
         <div className="content content--revealed">
-          <Textarea>{secret}</Textarea>
+          <Textarea value={secret} autoFocus={true} readOnly></Textarea>
         </div>
 
         <Footer />
@@ -129,7 +129,10 @@ const Reveal = () => {
       </Header>
 
       <div className="content content--reveal">
-        <form onSubmit={(event) => handleSubmit(event)}>
+        <form
+          onSubmit={(event) => handleSubmit(event)}
+          autoComplete="off"
+        >
           <div
             className={`passphrase ${
               passphraseError ? "passphrase--error" : ""
@@ -143,11 +146,13 @@ const Reveal = () => {
               </Label>
 
               <Input
-                value={passphrase}
+                defaultValue={passphrase}
                 type="password"
                 name="passphrase"
                 id="passphrase"
                 onChange={(event) => setPassphrase(event.target.value)}
+                autoComplete="one-time-code"
+                autoFocus={true}
               />
             </span>
           </div>
