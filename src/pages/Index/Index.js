@@ -122,6 +122,7 @@ const Index = () => {
           <form
             className="secret-form secret-form--index"
             onSubmit={(event) => handleCreation(event)}
+            autoComplete="off"
           >
             <Textarea
               name="secret"
@@ -132,6 +133,7 @@ const Index = () => {
               maxCharacterCount={maxCharacterCount}
               onChange={(event) => setCharacterCount(event.target.value.length)}
               required
+              autoFocus={true}
             />
 
             <div className="secret-form__options secret-form-options secret-form-options--index">
@@ -151,6 +153,7 @@ const Index = () => {
               <Input
                 className="secret-form-options__input secret-form-options__input--index"
                 type="text"
+                autoComplete="new-password"
                 value={passphrase}
                 onChange={(event) =>
                   setPassphrase(event.target.value.replace(/[^0-9a-z]/gi, ""))
@@ -212,7 +215,7 @@ const Index = () => {
             {messages.sharePassphraseLabel}:
           </span>
           <br />
-          <span className="t--beta">{passphrase}</span>
+          <span className="content-passphrase__passphrase t--beta">{passphrase}</span>
         </span>
 
         <div className="content__actions">
